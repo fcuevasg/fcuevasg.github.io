@@ -1,8 +1,9 @@
 window.onload = ()=>{
    let hoy = new Date();
-   // console.log(hoy.getMonth());
-    let c = new Calendar(hoy.getDate(),hoy.getMonth(),hoy.getFullYear());
-   // let c = new Calendar(1,10,2019);    
+  
+   let c = new Calendar(hoy.getDate(),hoy.getMonth(),hoy.getFullYear());
+     c.setFecha(10,11,2019);
+   c.USCalendar=false;
     c.createCalendar();
 
 }
