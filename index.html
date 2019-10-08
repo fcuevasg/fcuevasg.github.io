@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,39 @@
     <title>Calendario</title>
     <script src="./js/calendar.js"></script>
     <script src="./js/index.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
-<body >
+
+<body>
 
 
     <div id="divTabla">
-    <table  >
-        <tbody id="tabla">
+        <div id="botonera">
+            <button id="decadaAnterior">«</button>
+            <button id="_yearAnterior">&lt;</button>
+            <button id="btn_Year"></button>
+            <button id="_yearSiguiente">&gt;</button>
+            <button id="decadaSiguiente">»</button>
 
-        </tbody>
+            <div>
+                <button id="mesAnterior">&lt;</button>
+                <span id="mes"></span>
+                <button id="mesSiguiente">&gt;</button>
+            </div>
+        </div>
+        <table>
+            <tbody id="tabla">
+
+            </tbody>
 
 
-    </table>
-</div>
+        </table>
+
+        <div id="fechaSelect">
+            <p>Para seleccionar una fecha, pulse en el día deseado</p>
+            <p id=pSelect></p>
+        </div>
+    </div>
 </body>
+
 </html>
