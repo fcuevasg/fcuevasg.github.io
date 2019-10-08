@@ -124,6 +124,7 @@ class Calendar {
             }
 
             if (ind == this.dia) {
+                td.setAttribute("id","hoy");
                 td.setAttribute("class", "hoy");
             }
 
@@ -177,42 +178,56 @@ class Calendar {
         let btn_yearSiguiente = document.getElementById("_yearSiguiente");
         let btn_mesAnterior = document.getElementById("mesAnterior");
         let btn_mesSiguiente = document.getElementById("mesSiguiente");
-
+      
         btn_decadaAnterior.addEventListener("click", (ev) => {
+
+      
             let currentY = this.year;
             this.year -= 10;
             clearCalendar();
             this.createCalendar();
+            let hoy = document.getElementById("hoy");
+            hoy.classList.remove("hoy");
+            hoy.setAttribute("class","dia");  
 
         })
 
         btn_decadaSiguiente.addEventListener("click", (ev) => {
-
+          
             this.year += 10;
             clearCalendar();
             this.createCalendar();
+            let hoy = document.getElementById("hoy");
+            hoy.classList.remove("hoy");
+            hoy.setAttribute("class","dia");  
 
         })
 
         btn_yearAnterior.addEventListener("click", (ev) => {
-
+        
             this.year -= 1;
             clearCalendar();
             this.createCalendar();
+            let hoy = document.getElementById("hoy");
+            hoy.classList.remove("hoy");
+            hoy.setAttribute("class","dia");  
 
         })
 
         btn_yearSiguiente.addEventListener("click", (ev) => {
-
+         
             this.year += 1;
             clearCalendar();
             this.createCalendar();
+            let hoy = document.getElementById("hoy");
+            hoy.classList.remove("hoy");
+            hoy.setAttribute("class","dia");  
 
         })
 
 
         btn_mesAnterior.addEventListener("click", (ev) => {
-
+        
             if (this.mes == 0) {
 
                 this.mes = 11;
@@ -226,11 +241,13 @@ class Calendar {
 
             clearCalendar();
             this.createCalendar();
-
+            let hoy = document.getElementById("hoy");
+            hoy.classList.remove("hoy");
+            hoy.setAttribute("class","dia");  
         })
 
         btn_mesSiguiente.addEventListener("click", (ev) => {
-
+           
             if (this.mes == 11) {
 
                 this.mes = 0;
@@ -243,7 +260,9 @@ class Calendar {
 
             clearCalendar();
             this.createCalendar();
-
+            let hoy = document.getElementById("hoy");
+            hoy.classList.remove("hoy");
+            hoy.setAttribute("class","dia");  
         })
 
     }
