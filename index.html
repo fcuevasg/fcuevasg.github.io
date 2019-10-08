@@ -8,24 +8,26 @@
     <title>Calendario</title>
     <script src="./js/calendar.js"></script>
     <script src="./js/index.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
 
 
-    <div id="divTabla">
+    <div id="divTabla" class =" w3-container w3-xxxlarge"> 
         <div id="botonera">
-            <button id="decadaAnterior">«</button>
-            <button id="_yearAnterior">&lt;</button>
-            <button id="btn_Year"></button>
-            <button id="_yearSiguiente">&gt;</button>
-            <button id="decadaSiguiente">»</button>
+           
+            <button id="decadaAnterior" class="w3-medium w3-btn w3-round-xxlarge" >◀◀</button>
+            <button id="_yearAnterior" class="w3-medium w3-btn w3-round-xxlarge">◀</button>
+            <span id="btn_Year"></span>
+            <button id="_yearSiguiente" class="w3-medium w3-btn w3-round-xxlarge">▶</button>
+            <button id="decadaSiguiente" class="w3-medium w3-btn w3-round-xxlarge">▶▶</button>
 
             <div>
-                <button id="mesAnterior">&lt;</button>
+                <button id="mesAnterior" class="w3-medium w3-btn w3-round-xxlarge">◀</button>
                 <span id="mes"></span>
-                <button id="mesSiguiente">&gt;</button>
+                <button id="mesSiguiente" class="w3-medium w3-btn w3-round-xxlarge ">▶</button>
             </div>
         </div>
         <table>

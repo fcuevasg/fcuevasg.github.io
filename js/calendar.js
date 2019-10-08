@@ -8,6 +8,7 @@ class Calendar {
         this.cabecera = [];
         this.USCalendar = true;
         this.selectedFecha;
+        this.auxFecha;
         this.ShiftDias = {
             0: 1,
             1: 2,
@@ -56,6 +57,7 @@ class Calendar {
         this.dia = _dia;
         this.mes = _mes - 1;
         this.year = _year;
+        
         console.log(this.dia, this.mes, this.year, "primero")
     }
 
@@ -73,6 +75,7 @@ class Calendar {
         let dFin;
 
         fecha = new Date(this.year, this.mes, 1);
+        this.auxFecha=fecha;
         //console.log(fecha);
         let fechaFin = new Date(this.year, this.mes + 1, 0);
         dInicio = fecha.getDay();
@@ -101,6 +104,7 @@ class Calendar {
             }
 
             td.appendChild(textnode);
+            td.setAttribute("class","nombreMes")
             tr.appendChild(td);
         }
 
@@ -164,9 +168,9 @@ class Calendar {
         span_mes.innerHTML = this.setDeMeses[this.mes];
     }
 
-    setCabecera(valores) {
-
-        this.cabecera = valores;
+    setCabecera(vbuttonalores) {
+button
+        this.cabebuttoncera = valores;
 
     }
 
