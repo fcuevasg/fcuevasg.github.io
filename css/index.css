@@ -5,8 +5,15 @@
     color:#014036;
 }
 
+.WeekType1{
+    color: purple !important;
+}
 
+.WeekType2{
+    color:green !important;
+}
 #divTabla{
+    grid-area: Calendario;
     background:#abd4eb;
     width:fit-content;
     border-radius:12px;
@@ -97,7 +104,7 @@ td{
     color: #fff !important;
     text-transform: uppercase;
     text-decoration: none;
-    background: #60a3bc;
+    background: #60a3bc ;
    /* padding: 20px;*/
     border-radius: 50px;
     /*display: inline-block;*/
@@ -117,5 +124,25 @@ width:0px;
     font-size: 16px;
 }
 
+.horario{
+
+    grid-area: Horario;
+}
+
+.Container{
 
 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 40px 40px;
+    grid-template-areas:
+      "Calendario Horario";
+  
+}
+
+
+
+
+.Calendario { grid-area: Calendario; }
+.Horario { grid-area: Horario; }
