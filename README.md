@@ -1,5 +1,5 @@
 # fcuevasg.github.io
-<<<<<<< HEAD
+
 
 # TODO
 - [ ] Crear seleccionador de fecha 
