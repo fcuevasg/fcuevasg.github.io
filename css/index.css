@@ -1,3 +1,7 @@
+body{
+    background:#fafafa;
+}
+
 .fiesta{
     color:red;
 }
@@ -13,8 +17,11 @@
     color:green !important;
 }
 #divTabla{
+
+    margin-top:10vh;
+    margin-left: 2vw;
     grid-area: Calendario;
-    background:#abd4eb;
+  
     width:fit-content;
     border-radius:12px;
 }
@@ -138,11 +145,87 @@ width:0px;
     gap: 40px 40px;
     grid-template-areas:
       "Calendario Horario";
+
+    
+
   
 }
 
 
 
 
-.Calendario { grid-area: Calendario; }
-.Horario { grid-area: Horario; }
+.Calendario { 
+    grid-area: Calendario; }
+.Horario {
+
+     grid-area: Horario;
+font-weight: bold;
+
+margin-left: 4vw;
+
+
+
+}
+
+
+.tabla_horario{
+
+    margin-top: 20vh;
+    border:0px;
+border-spacing: 0px;
+border-collapse:collapse;
+}
+
+
+
+.tabla_horario td{
+    padding: 0.9em;
+    border:1px solid black;
+}
+.tabla_horario th{
+    padding-bottom: 1.3em;
+    padding-left: 0.3em;
+    font-size:24px;
+    border:1px solid black;
+
+}
+
+.Cliente{
+
+    background-color: #60a3bc;
+
+}
+.Servidores{
+
+    background-color: tomato;
+}
+
+.Diseño{
+   background-color: springgreen;
+}
+
+
+.Empresa{
+    background-color: tan;
+}
+
+.Inglés{
+
+    background-color: thistle;
+}
+
+.Despliegue{
+
+    background-color: saddlebrown;
+    color:white;
+
+
+}
+
+
+.Titulo{
+
+    text-align: center;
+    font-weight: bold;
+    font-size:54px;
+}
