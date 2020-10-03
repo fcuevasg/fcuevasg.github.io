@@ -142,10 +142,8 @@ class Calendar {
                
             }
 
-            if (ind == this.dia) {
-                td.setAttribute("id","hoy");
-                td.setAttribute("class", "hoy");
-            }
+            
+            
 
             //Añadir listener
             td.addEventListener("click", (ev) => {
@@ -163,7 +161,12 @@ class Calendar {
 
 
             if (ind > dInicio - 2 && ind < dFin + dInicio - 1) {
-
+                
+                if (cnt == this.dia) {
+                    console.log("Dia=> " + this.dia +"\n ind =>" + ind);
+                    td.setAttribute("id","hoy");
+                    td.setAttribute("class", "hoy");
+                }
                 let textnode = document.createTextNode(cnt);
                 td.appendChild(textnode);
                 cnt++;
