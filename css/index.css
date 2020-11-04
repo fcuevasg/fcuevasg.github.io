@@ -229,3 +229,69 @@ border-collapse:collapse;
     font-weight: bold;
     font-size:54px;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+    .Container {
+        margin:0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+          "Calendario"
+          "Horario";
+      }
+
+      .Titulo{
+          text-align: center;
+       
+      }
+
+
+
+      #divTabla{
+          font-size:1em !important;
+      }
+
+      #tabla{
+         text-align: center;
+      }
+      #botonera{
+        font-size:1.4em !important;
+
+      }
+      #decadaAnterior, #_yearAnterior,#_yearSiguiente,#decadaSiguiente, #mesSiguiente,#mesAnterior{
+          font-size:1.4em !important;
+          font-weight: bold;
+          padding: 2px 4px;
+      }
+      table{
+          margin-left:2vw;
+        font-size:1.4em !important;
+          padding:0;
+      }
+      .Horario{
+        margin:0;
+      }
+      .tabla_horario{
+          margin-top: 5vh;
+      }
+      .tabla_horario td{
+          padding:2px !important;
+          font-size: small;
+      }
+      .tabla_horario th{
+        padding:0px !important;
+        font-size: small;
+    }
+      #fechaSelect{
+          display:none;
+      }
+
+      .d3d{
+        font-size:12px !important; 
+
+      }
+  }
