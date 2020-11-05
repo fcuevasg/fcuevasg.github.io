@@ -18,6 +18,7 @@ class Calendar {
             5: 6,
             6: 7
         };
+
         this.setdeDias = {
             0: "Lun",
             1: "Mar",
@@ -57,7 +58,7 @@ class Calendar {
         this.dia = _dia;
         this.mes = _mes - 1;
         this.year = _year;
-        
+
         console.log(this.dia, this.mes, this.year, "primero")
     }
 
@@ -69,18 +70,27 @@ class Calendar {
         let tr;
         let td;
         let cnt = 1;
+        let cntDias = 1;
         let classA = false;
         //Fechas
         let fecha;
         let dInicio;
         let dFin;
+        let filas;
+        let extraFila = false;
 
         fecha = new Date(this.year, this.mes, 1);
-        this.auxFecha=fecha;
-        //console.log(fecha);
+        this.auxFecha = fecha;
         let fechaFin = new Date(this.year, this.mes + 1, 0);
+       
+        
         dInicio = fecha.getDay();
         dFin = fechaFin.getDate();
+
+        console.log("[INICIO] "+fecha,dInicio);
+        console.log("[FIN] "+fechaFin,dFin);
+
+
 
         //Creación de la tabla.
 
@@ -105,23 +115,32 @@ class Calendar {
             }
 
             td.appendChild(textnode);
-            td.setAttribute("class","nombreMes")
+            td.setAttribute("class", "nombreMes")
             tr.appendChild(td);
         }
 
 
 
+
+        if (dInicio == 0) {
+            dInicio = 6;
+            dFin += 6;
+            filas = 5 + dInicio
+            extraFila = true;
+            console.log(this.mes+ "mes" + dFin)
+
+        } else {
+            console.log(this.mes+ "mes " + dFin)
+
+            filas = 5 + dInicio
+        }
+        console.log(filas)
         //Creación de días
-        for (let ind = 0; ind < 35; ind++) {
+        for (let ind = 0; ind < filas * 7; ind++) {
+    
             //Si ya ha pintado una semana, crea el siguiente TR.
             if (ind % 7 == 0) {
                 tr = document.createElement("tr");
-          /*      if(ind % 2 != 0){
-                    tr.setAttribute("class","WeekType1");
-                } else {
-                    tr.setAttribute("class","WeekType2");
-
-                }*/
                 tabla.appendChild(tr);
             }
 
@@ -132,18 +151,18 @@ class Calendar {
                 td.setAttribute("class", "fiesta");
             } else {
 
-                if(ind % 2 == 0  ){
-                    
-                    td.setAttribute("class"," dia WeekType1");
+                if (ind % 2 == 0) {
+
+                    td.setAttribute("class", " dia WeekType1");
                 } else {
-                    td.setAttribute("class","dia WeekType2");
+                    td.setAttribute("class", "dia WeekType2");
 
                 }
-               
+
             }
 
-            
-            
+
+
 
             //Añadir listener
             td.addEventListener("click", (ev) => {
@@ -157,25 +176,52 @@ class Calendar {
 
                 }
 
-            })
+            });
 
 
-            if (ind > dInicio - 2 && ind < dFin + dInicio - 1) {
-                
-                if (cnt == this.dia) {
-                    console.log("Dia=> " + this.dia +"\n ind =>" + ind);
-                    td.setAttribute("id","hoy");
-                    td.setAttribute("class", "hoy");
+
+            //Creación de números
+
+
+            if(!extraFila){
+                if (ind >= dInicio-1 && cnt < dFin+1  ) {
+              
+                    console.log(cnt,dFin)
+                    if (cnt == this.dia) {
+    
+                        td.setAttribute("id", "hoy");
+                        td.setAttribute("class", "hoy");
+                    }
+                    let textnode = document.createTextNode(cnt);
+                    td.appendChild(textnode);
+                    cnt++;
+    
+                } else {
+    
+                    td.setAttribute("class", "vacio");
+    
                 }
-                let textnode = document.createTextNode(cnt);
-                td.appendChild(textnode);
-                cnt++;
-
             } else {
-
-                td.setAttribute("class", "vacio");
-
+                if (ind >= dInicio && cnt < dFin - dInicio+2  ) {
+              
+                    console.log(cnt,dFin)
+                    if (cnt == this.dia) {
+    
+                        td.setAttribute("id", "hoy");
+                        td.setAttribute("class", "hoy");
+                    }
+                    let textnode = document.createTextNode(cnt);
+                    td.appendChild(textnode);
+                    cnt++;
+    
+                } else {
+    
+                    td.setAttribute("class", "vacio");
+    
+                }
             }
+
+           
 
             tr.appendChild(td);
 
@@ -187,7 +233,7 @@ class Calendar {
     }
 
     setCabecera(vbuttonalores) {
-button
+        button
         this.cabebuttoncera = valores;
 
     }
@@ -200,56 +246,56 @@ button
         let btn_yearSiguiente = document.getElementById("_yearSiguiente");
         let btn_mesAnterior = document.getElementById("mesAnterior");
         let btn_mesSiguiente = document.getElementById("mesSiguiente");
-      
+
         btn_decadaAnterior.addEventListener("click", (ev) => {
 
-      
+
             let currentY = this.year;
             this.year -= 10;
             clearCalendar();
             this.createCalendar();
             let hoy = document.getElementById("hoy");
             hoy.classList.remove("hoy");
-            hoy.setAttribute("class","dia");  
+            hoy.setAttribute("class", "dia");
 
         })
 
         btn_decadaSiguiente.addEventListener("click", (ev) => {
-          
+
             this.year += 10;
             clearCalendar();
             this.createCalendar();
             let hoy = document.getElementById("hoy");
             hoy.classList.remove("hoy");
-            hoy.setAttribute("class","dia");  
+            hoy.setAttribute("class", "dia");
 
         })
 
         btn_yearAnterior.addEventListener("click", (ev) => {
-        
+
             this.year -= 1;
             clearCalendar();
             this.createCalendar();
             let hoy = document.getElementById("hoy");
             hoy.classList.remove("hoy");
-            hoy.setAttribute("class","dia");  
+            hoy.setAttribute("class", "dia");
 
         })
 
         btn_yearSiguiente.addEventListener("click", (ev) => {
-         
+
             this.year += 1;
             clearCalendar();
             this.createCalendar();
             let hoy = document.getElementById("hoy");
             hoy.classList.remove("hoy");
-            hoy.setAttribute("class","dia");  
+            hoy.setAttribute("class", "dia");
 
         })
 
 
         btn_mesAnterior.addEventListener("click", (ev) => {
-        
+
             if (this.mes == 0) {
 
                 this.mes = 11;
@@ -265,11 +311,11 @@ button
             this.createCalendar();
             let hoy = document.getElementById("hoy");
             hoy.classList.remove("hoy");
-            hoy.setAttribute("class","dia");  
+            hoy.setAttribute("class", "dia");
         })
 
         btn_mesSiguiente.addEventListener("click", (ev) => {
-           
+
             if (this.mes == 11) {
 
                 this.mes = 0;
@@ -284,12 +330,12 @@ button
             this.createCalendar();
             let hoy = document.getElementById("hoy");
             hoy.classList.remove("hoy");
-            hoy.setAttribute("class","dia");  
+            hoy.setAttribute("class", "dia");
         })
 
 
 
-     
+
 
     }
 
@@ -315,7 +361,7 @@ function clearCalendar() {
 
 
 
-Date.prototype.getWeek = function() {
+Date.prototype.getWeek = function () {
     let date = new Date(this.getTime());
     date.setHours(0, 0, 0, 0);
     // Thursday in current week decides the year.
@@ -323,6 +369,6 @@ Date.prototype.getWeek = function() {
     // January 4 is always in week 1.
     let week1 = new Date(date.getFullYear(), 0, 4);
     // Adjust to Thursday in week 1 and count number of weeks from date to week1.
-    return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000
-                          - 3 + (week1.getDay() + 6) % 7) / 7);
-  }
+    return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 -
+        3 + (week1.getDay() + 6) % 7) / 7);
+}
