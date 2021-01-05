@@ -59,7 +59,7 @@ class Calendar {
         this.mes = _mes - 1;
         this.year = _year;
 
-        console.log(this.dia, this.mes, this.year, "primero")
+        
     }
 
     createCalendar() {
@@ -87,8 +87,6 @@ class Calendar {
         dInicio = fecha.getDay();
         dFin = fechaFin.getDate();
 
-        console.log("[INICIO] "+fecha,dInicio);
-        console.log("[FIN] "+fechaFin,dFin);
 
 
 
@@ -127,14 +125,14 @@ class Calendar {
             dFin += 6;
             filas = 5 + dInicio
             extraFila = true;
-            console.log(this.mes+ "mes" + dFin)
+            
 
         } else {
-            console.log(this.mes+ "mes " + dFin)
+            
 
             filas = 5 + dInicio
         }
-        console.log(filas)
+      
         //Creación de días
         for (let ind = 0; ind < filas * 7; ind++) {
     
@@ -186,7 +184,7 @@ class Calendar {
             if(!extraFila){
                 if (ind >= dInicio-1 && cnt < dFin+1  ) {
               
-                    console.log(cnt,dFin)
+                  
                     if (cnt == this.dia) {
     
                         td.setAttribute("id", "hoy");
@@ -204,7 +202,7 @@ class Calendar {
             } else {
                 if (ind >= dInicio && cnt < dFin - dInicio+2  ) {
               
-                    console.log(cnt,dFin)
+                   
                     if (cnt == this.dia) {
     
                         td.setAttribute("id", "hoy");
