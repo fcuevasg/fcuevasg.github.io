@@ -153,9 +153,9 @@ class Calendar {
 
                 if (ind % 2 == 0) {
 
-                    td.setAttribute("class", " dia WeekType1");
+                    td.setAttribute("class", " dia WeekType2");
                 } else {
-                    td.setAttribute("class", "dia WeekType2");
+                    td.setAttribute("class", "dia WeekType1");
 
                 }
 
