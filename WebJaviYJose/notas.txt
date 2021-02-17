@@ -1,0 +1,9 @@
+.............................
+Requisito imprescindible:
+
+
+- Atributo alt a todas las imagenes y vídeos, e incluso a los audios
+
+
+
+
