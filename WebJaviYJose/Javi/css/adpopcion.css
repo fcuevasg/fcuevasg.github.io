@@ -1,0 +1,52 @@
+.Adopciones {
+  margin-top: 10vh;
+  grid-area: contenido;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: flex-st;
+      align-content: flex-st;
+}
+
+.card {
+  -webkit-box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
+          box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
+  margin: 1vw;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -ms-flex-item-align: auto;
+      -ms-grid-row-align: auto;
+      align-self: auto;
+}
+
+.card img {
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+}
+
+.card a {
+  color: #FE8E7A !important;
+  background-color: #6D6875;
+  text-decoration: none;
+  border: none;
+}
+
+h2 {
+  color: #6D6875;
+  text-align: center;
+  margin-top: 5vh;
+}
+/*# sourceMappingURL=adpopcion.css.map */

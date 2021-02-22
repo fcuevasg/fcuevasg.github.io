@@ -84,7 +84,6 @@
 }
 
 .filtro {
-  margin-top: -30vh;
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: filtro;
@@ -150,7 +149,6 @@
   -ms-grid-column: 2;
   grid-area: contenido;
   margin-left: -15vw;
-  margin-top: -30vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
