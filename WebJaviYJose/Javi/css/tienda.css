@@ -1,0 +1,207 @@
+.barraBusqueda {
+  margin-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  width: 70vw;
+  max-width: 70vw;
+  max-height: 15vh;
+  font-size: 20px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: busqueda;
+  background-color: #FFCDB2;
+  color: #6D6875;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.barraBusqueda form {
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.barraBusqueda .nav {
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.barraBusqueda input {
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.barraBusqueda a {
+  color: #6D6875;
+  text-decoration: none;
+}
+
+.barraBusqueda img {
+  width: 30px;
+  height: 30px;
+}
+
+.display {
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+      grid-template-areas: "busqueda busqueda" "filtro contenido";
+}
+
+.filtro {
+  margin-top: -30vh;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: filtro;
+  margin-left: 5vw;
+  background-color: #FFCDB2;
+  width: 20vw;
+  max-width: 40vw;
+  max-height: 30vw;
+  -webkit-box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
+          box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filtro form {
+  display: block;
+}
+
+.filtro form input {
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -ms-flex-item-align: auto;
+      -ms-grid-row-align: auto;
+      align-self: auto;
+}
+
+.filtro form input[text] {
+  border: none;
+}
+
+.inputTextForm {
+  border: none;
+  border-bottom: 1px solid grey;
+  text-align: center;
+  background-color: #FFCDB2;
+}
+
+.itemForm {
+  padding: 10px;
+}
+
+.productos {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: contenido;
+  margin-left: -15vw;
+  margin-top: -30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: flex-st;
+      align-content: flex-st;
+}
+
+.card {
+  -webkit-box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
+          box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
+  margin: 1vw;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -ms-flex-item-align: auto;
+      -ms-grid-row-align: auto;
+      align-self: auto;
+}
+
+.card img {
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+.card a {
+  color: #FE8E7A !important;
+  background-color: #6D6875;
+  text-decoration: none;
+  border: none;
+}
+
+.slider {
+  -webkit-appearance: none;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
+}
+/*# sourceMappingURL=tienda.css.map */

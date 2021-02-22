@@ -2,241 +2,175 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>PETS FOREVER</title>
-	<link rel="stylesheet" href="css/style1.css" type="text/css" media="all" />
-	<!--[if lte IE 6]>
-		<style type="text/css" media="screen">
-			.tabbed { height:420px; }
-		</style>
-	<![endif]-->
-	
+	<title>Pets Forever</title>
+	<link rel="stylesheet" href="scss/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="scss/style1.css" type="text/css" media="all" />
 	<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 	<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
-	<script src="js/jquery.slide.js" type="text/javascript"></script>
 	<script src="js/jquery-func.js" type="text/javascript"></script>
-	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<link href="carousel.css" rel="stylesheet">
 </head>
 <body>
-<!-- Top -->
-<div id="top">
-	
+
+<!-- Header -->
+<div id="header">
 	<div class="shell">
 		
-		<!-- Header -->
-		<div id="header">
-			<h1 id="logo"><a href="#">PETS FOREVER</a></h1>
-			<div id="navigation">
-				<ul>
-					<li><a href="paginap.html">Inicio<span><em></em></span></a></li>
-					<li><a href="pagina2.html">Adopción<span><em></em></span></a></li>
-					<li><a href="#">Servicios<span><em></em></span></a></li>
-					<li><a href="index.html">Tienda<span><em></em></span></a></li>
-					<li class="last"><a href="contacto.html">Contacta<span><em></em></span></a></li>
-				</ul>
-			</div>
-		</div>
-		<!-- End Header -->
+		<!-- Logo -->
 		
-		<!-- Slider -->
-		<div id="slider">
-			<div id="slider-holder">
-				<ul>
-				    <li><a href="#"><img src="css/images/comida.jpg" alt="" /></a></li>
-				     <li><a href="#"><img src="css/images/gato.jpg" alt="" /></a></li>				   
-				      <li><a href="#"><img src="css/images/comida.jpg" alt="" /></a></li>
-				     <li><a href="#"><img src="css/images/gato.jpg" alt="" /></a></li>	
-				      <li><a href="#"><img src="css/images/comida.jpg" alt="" /></a></li>
-				     <li><a href="#"><img src="css/images/gato.jpg" alt="" /></a></li>	
-				</ul>
-			</div>
-			
+		<h1 id="logo"><img src="css/images/logo.png"></img<a href="#">Pets Forever</a></h1>
+		<!-- End Logo -->
+		
+		<!-- Navigation -->
+		<div id="navigation">
+			<ul>
+			    <li><a href="#">Adopción<span><em></em></span></a></li>
+			    <li><a href="#">Tienda<span><em></em></span></a></li>
+			    <li><a href="#">Servicios<span><em></em></span></a></li>
+			    <li><a href="#">Contacta<span><em></em></span></a></li>
+			    <li class="last"><a href="#">Inciar sesión<span><em></em></span></a></li>
+			</ul>
 		</div>
-		<!-- End Slider -->
+		<!-- End Navigation -->
 		
 	</div>
 </div>
-<!-- Top -->
+		
+		<div>
+			    <video autoplay="autoplay" loop="loop" id="video_background" preload="auto" volume="50"/>
+                 <source src="ID_4186960.mp4" type="video/mp4" />
+                </video/>
+			
+				<audio id="demo" src="musica.mp3"></audio>
+<div>
+  <button onclick="document.getElementById('demo').play()">Reproducir el Audio</button>
+  <button onclick="document.getElementById('demo').pause()">Pausar el Audio</button>
+  <button onclick="document.getElementById('demo').volume+=0.1">Aumentar el Volumen</button>
+  <button onclick="document.getElementById('demo').volume-=0.1">Disminuir el Volumen</button>
+</div>
+            </div>
+			
+			<div id="main">
+				<div class="shell">
+					
+					
+					
+				</div>
+			</div>
+	  
+		<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+		  <ol class="carousel-indicators">
+			<li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+			<li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+			<li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+		  </ol>
+		  <div class="carousel-inner">
+			<div class="carousel-item active">
+				<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+			  <div class="container">
+				<div class="carousel-caption text-start">
+				
+				</div>
+			  </div>
+			</div>
+			<div class="carousel-item">
+			  <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+	  
+			  <div class="container">
+				<div class="carousel-caption">
+				
+				</div>
+			  </div>
+			</div>
+			<div class="carousel-item">
+			  <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+	  
+			  <div class="container">
+				<div class="carousel-caption text-end">
+				 
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		  </a>
+		</div>
+	  
+	  
 
-<!-- Main -->
 <div id="main">
 	<div class="shell">
 		
-		<!-- Search, etc -->
-		<div class="options">
-			<div class="search">
-				<form action="" method="post">
-					<span class="field"><input type="text" class="blink" value="BUSCAR" title="BUSCAR" /></span>
-					<input type="text" class="search-submit" value="GO" />
-				</form>
-			</div>
-		
+		<!-- Cols -->
+		<div class="cols">
+			<div class="cl">&nbsp;</div>
 			
-			<div class="right">
-				<span class="cart">
-					<a href="#" class="cart-ico">&nbsp;</a>
-					<strong>0.00€</strong>
-				</span>
-				<span class="left more-links">
-					<a href="#">Finalizar</a>
-					<a href="#">Detalles</a>
-				</span>
+			<!-- Col -->
+			<div class="col">
+				<h3>Veterinario</h3>
+				<p> Realizamos consultas veterinarias sobre medicina general y de especialista. Entre las consultas de medicina general se encuentran aquellas relacionadas con diversas patologías y chequeo rutinarios.<br /><a href="#" class="more">read more</a></p>
+				
 			</div>
+			<!-- End Col -->
+			
+			<!-- Col -->
+			<div class="col">
+				<h3>Peluqueria</h3>
+				<p> No solo cuidamos de la salud de los animales de compañía, sino que además queremos que se sientan cómodos y cuidados para que presumas de su belleza. Para ayudarte a conseguirlo, ponemos a tu disposición un servicio profesional de peluquería canina y felina. <br /><a href="#" class="more">read more</a></p>
+			</div>
+			<!-- End Col -->
+			
+			<!-- Col -->
+			<div class="col col-last">
+				<h3>Vacunas</h3>
+				<p>La vacunación es la única manera de prevenir ciertas enfermedades causadas por virus y algunas bacterias que afectan a nuestras mascotas. La administración de vacunas veterinarias siguen unos protocolos y se empiezan a administrar vacunas a partir de los 45 días de edad.  <br /><a href="#" class="more">read more</a></p>
+				
+			</div>
+			<!-- End Col -->
+			
+			<div class="cl">&nbsp;</div>
 		</div>
-		<!-- End Search, etc -->
-		
-		<!-- Content -->
-		<div id="content">
-			
-			<!-- Tabs -->
-			<div class="tabs">
-				<ul>
-				    <li><a href="#" class="active"><span>Perros</span></a></li>
-				    <li><a href="#"><span>Gatos</span></a></li>
-				    <li><a href="#" class="red"><span>Otros</span></a></li>
-				</ul>
-			</div>
-			<!-- Tabs -->
-			
-			<!-- Container -->
-			<div id="container">
-				
-				<div class="tabbed">
-					
-					<!-- First Tab Content -->
-					<div class="tab-content" style="display:block;">
-						<div class="items">
-							<div class="cl">&nbsp;</div>
-							<ul>
-							    <li>
-							    	<div class="image">
-							    		<a href="#"><img src="css/images/cama.jpg" alt="" /></a>
-							    	</div>
-							    	<p>
-							    		IBN Número: <span>125515</span><br />
-							    		Nombre: <a href="#">Cama </a>
-							    	</p>
-							    	<p class="price">Precio: <strong>53 €</strong></p>
-							    </li>
-							    <li>
-							    	<div class="image">
-							    		<a href="#"><img src="css/images/comida.jpg" alt="" /></a>
-							    	</div>
-							    	<p>
-							    		IBN Número: <span>125515</span><br/>
-							    		Nombre: <a href="#">Purina comida para perros</a>
-							    	</p>
-							    	<p class="price">Precio: <strong>53 €</strong></p>
-							    </li>
-							    <li>
-							    	<div class="image">
-							    		<a href="#"><img src="css/images/toy2.jpg" alt="" /></a>
-							    	</div>
-							    	<p>
-							    		IBN Número: <span>125515</span><br />
-							    		Nombre: <a href="#">Jugete realista para perros</a>
-							    	</p>
-							    	<p class="price">Precio: <strong>53 €<strong></p>
-							    </li>
-							    <li>
-							    	<div class="image">
-							    		<a href="#"><img src="css/images/toy.jfif" alt="" /></a>
-							    	</div>
-							    	<p>
-							    		IBN Número<: <span>125515</span><br />
-							    		Nombre: <a href="#">Hueso para perros</a>
-							    	</p>
-							    	<p class="price">Precio: <strong>53 €</strong></p>
-							    </li>
-							    <li>
-							    	<div class="image">
-							    		<a href="#"><img src="css/images/toy3.jpg" alt="" /></a>
-							    	</div>
-							    	<p>
-							    		IBN Número: <span>125515</span><br />
-							    		Nombre: <a href="#"></a>
-							    	</p>
-							    	<p class="price">Precio: <strong>53 €</strong></p>
-							    </li>
-							    <li>
-							    	<div class="image">
-							    		<a href="#"><img src="css/images/toy4.jpg" alt="" /></a>
-							    	</div>
-							    	<p>
-							    		IBN Número: <span>125515</span><br />
-							    		Nombre: <a href="#"></a>
-							    	</p>
-							    	<p class="price">Precio: <strong>53 €</strong></p>
-							    </li>
-							   
-							</ul>
-							<div class="cl">&nbsp;</div>
-						</div>
-					</div>
-					<!-- End First Tab Content -->
-					
-					<!-- Second Tab Content -->
-					<div class="tab-content">
-						<div class="items">
-							<div class="cl">&nbsp;</div>
-							
-							<div class="cl">&nbsp;</div>
-						</div>
-					</div>
-					<!-- End Second Tab Content -->
-					
-					<!-- Third Tab Content -->
-					<div class="tab-content">
-						<div class="items">
-							<div class="cl">&nbsp;</div>
-							
-							<div class="cl">&nbsp;</div>
-						</div>
-					</div>
-					<!-- End Third Tab Content -->
-					
-				</div>
-				
-				<!-- Brands -->
-				<div class="brands">
-					<h3>Proveedores</h3>
-					<div class="logos">
-						<a href="#"><img src="css/images/log.gif" alt="" /></a>
-						<a href="#"><img src="css/images/lo2.gif" alt="" /></a>
-						<a href="#"><img src="css/images/g3.gif" alt="" /></a>
-						<a href="#"><img src="css/images/l4.gif" alt="" /></a>
-						<a href="#"><img src="css/images/l5.gif" alt="" /></a>
-					</div>
-				</div>
-				<!-- End Brands -->
-				
-				<!-- Footer -->
-				<div id="footer">
-					<div class="left">
-						<a href="#">Inicio</a>
-						<span>|</span>
-						<a href="pagina2.html">Adopción</a>
-						<span>|</span>
-						<a href="#">Servicios</a>
-						<span>|</span>
-						<a href="#">Tienda</a>
-						<span>|</span>
-						<a href="#">Contacta</a>
-					</div>
-					<div class="right">
-					
-					</div>
-				</div>
-				<!-- End Footer -->
-				
-			</div>
-			<!-- End Container -->
-			
-		</div>
-		<!-- End Content -->
+		<!-- End Cols -->
 		
 	</div>
 </div>
 <!-- End Main -->
+
+<!-- Footer -->
+<div id="footer">
+	<div class="shell">
+		
+		
+		
+		<!-- Footer Nav -->
+		<div class="right">
+			<p>
+			
+					<a href="#">Adopción</a>
+					<span>|</span>
+					<a href="#">Tienda</a>
+					<span>|</span>
+					<a href="#">Servicios</a>
+					<span>|</span>
+					<a href="#">Contacta</a>
+					<span>|</span>
+					<a class="last"><a href="#">Inciar sesión</a>
+			</p>
+			
+		</div>
+		<!-- End Footer Nav -->
+		
+	</div>
+</div>
+<!-- End Footer -->
 	
 </body>
 </html>
