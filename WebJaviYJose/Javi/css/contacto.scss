@@ -1,0 +1,106 @@
+$colorLetra: #6D6875;
+
+.contactos{
+    margin-top: 10vh;
+    grid-area: contenido;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-st;
+    color: $colorLetra;
+
+    h1{
+        margin: 1vw;
+    }
+
+}
+
+.card{
+
+
+    box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
+    hr{
+        width: 50%;
+      margin-right: 25%;
+      margin-left: 25%;
+    
+    }
+}
+
+
+.redContaner{
+ 
+    margin-top: 3vh;
+    img{
+        margin: 1.3vw ;
+        width: 40px;
+        height: 40px;
+    }
+    span{
+        font-size: 24px;
+        color: $colorLetra;
+    }
+}
+
+.a1{
+    form{
+       
+        height: 100%;
+    }
+
+
+    input{
+        margin: 1vw;
+        padding-top:1vh;
+
+      
+        width: 80%;
+        border: none;
+        border: 1px solid grey;
+        display: block;
+        border-radius: 5px;
+
+        margin-bottom: 2vh;
+    }
+
+
+    textarea{
+        margin-top:2vh;
+        margin-bottom:3vh;
+
+        
+        margin-left: 1vw;
+        width: 80%;
+        border-radius: 5px;
+        border: 1px solid grey;
+        text-align: left;
+        height: 20vh;
+    }
+
+    a{
+        margin: 1vw;
+        
+    }
+}
+
+h1{
+    text-align: center;
+}
+
+
+.a3{
+    text-align: center;
+    h4{
+        margin: 1vw;
+        margin-bottom: 8vh;
+    }    
+
+}
+
+h2{
+    color:$colorLetra;
+    text-align: center;
+    margin-top:2vh;
+}
