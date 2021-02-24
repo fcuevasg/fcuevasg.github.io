@@ -1,20 +1,16 @@
-$colorLetra: #6D6875;
-
-.Adopciones {
+.Adopciones{
     margin-top: 10vh;
-    grid-area: contenido;
-
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-around;
-    align-content: flex-st
+    align-content: space-around;
+    align-items: center;
+
+
+
 }
-
 .card{
-    box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
-
-    margin: 1vw;
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
@@ -33,9 +29,7 @@ $colorLetra: #6D6875;
 }
 
 
-
 h2{
-color:$colorLetra;
-text-align: center;
-margin-top:5vh;
+    margin-top: 10vh;
+    text-align: center;
 }

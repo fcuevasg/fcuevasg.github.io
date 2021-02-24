@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,MAAM,CAAA;EACL,QAAQ,EAAE,KAAK;EACf,MAAM,EAAC,GAAG;EACV,KAAK,EAAE,GAAG;CAEV;;AALD,AAIC,MAJK,CAIL,MAAM,CAAA;EAAC,MAAM,EAAC,IAAI;CAAG",
+    "sources": [
+        "javi.scss"
+    ],
+    "names": [],
+    "file": "javi.css"
+}

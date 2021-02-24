@@ -1,6 +1,5 @@
 .Adopciones {
   margin-top: 10vh;
-  grid-area: contenido;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8,18 +7,18 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -ms-flex-line-pack: flex-st;
-      align-content: flex-st;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .card {
-  -webkit-box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
-          box-shadow: 1px 6px 5px 0px rgba(0, 0, 0, 0.28);
-  margin: 1vw;
   -webkit-box-ordinal-group: 1;
       -ms-flex-order: 0;
           order: 0;
@@ -46,8 +45,7 @@
 }
 
 h2 {
-  color: #6D6875;
+  margin-top: 10vh;
   text-align: center;
-  margin-top: 5vh;
 }
-/*# sourceMappingURL=adpopcion.css.map */
+/*# sourceMappingURL=servicios.css.map */
