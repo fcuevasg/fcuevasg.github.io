@@ -124,6 +124,21 @@ $fondoWidgets: #FFCDB2;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: flex-st
+    
+}
+#producto1{
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+#producto2{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+#producto3{
+    -webkit-filter: invert(90%) hue-rotate(175deg);
+    filter: invert(90%) hue-rotate(175deg);
+
 }
 
 .card{

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -58,7 +58,8 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false"> <img src="Javi/img/menu.svg" alt="icono menu" srcset="">
+                        aria-haspopup="true" aria-expanded="false"> <img src="Javi/img/menu.svg" alt="icono menu"
+                            srcset="">
                         Categorías</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Juguetes</a>
@@ -129,7 +130,7 @@
 
         <section class="productos">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="Javi/img/kong--570x500.jpg" alt="Card image cap">
+                <img class="card-img-top" id="producto1" src="Javi/img/kong--570x500.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Juguete 1</h5>
                     <p class="card-text">Ejemplo de juguete</p>
@@ -139,7 +140,7 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="Javi/img/peluches.jpg" alt="Card image cap">
+                <img class="card-img-top" id="producto2" src="Javi/img/peluches.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Juguete 2</h5>
                     <p class="card-text">Ejemplo de juguete</p>
@@ -149,7 +150,9 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="Javi/img/juguete-para-perros-nice-pelotas-tenis-cuerda-algo-mta-11506.jpg" alt="Card image cap">
+                <img class="card-img-top" id="producto3"
+                    src="Javi/img/juguete-para-perros-nice-pelotas-tenis-cuerda-algo-mta-11506.jpg"
+                    alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Juguete 3</h5>
                     <p class="card-text">Ejemplo de juguete</p>
@@ -159,7 +162,15 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="Javi/img/61vYs1it41L._AC_SX466_.jpg" alt="Card image cap">
+
+
+                <picture>
+                    <source media="(min-width: 1440px)" srcset="Javi/img/juguete4-grande.jpg">
+                    <source media="(min-width: 650px)" srcset="Javi/img/juguete4.jpg">
+                    <source media="(min-width: 465px)" srcset="Javi/img/juguete4-pequeño.jpg">
+                    <img src="Javi/img/juguete-para-perros-nice-pelotas-tenis-cuerda-algo-mta-11506.jpg">
+                </picture>
+
                 <div class="card-body">
                     <h5 class="card-title">Juguete 4</h5>
                     <p class="card-text">Juguete para perros</p>
