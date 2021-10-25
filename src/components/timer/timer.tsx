@@ -1,5 +1,6 @@
 import React from "react";
 
+import "./timer.scss"
 
 const formatTime = (timer: number) => {
   const getSeconds = `0${timer % 60}`.slice(-2);
@@ -35,13 +36,13 @@ export const Timer = (props:timerProps) => {
         <p>{formatTime(timer)}</p>
         <div className="buttons">
           {!isActive && !isPaused ? (
-            <button onClick={handleStart}>Start</button>
+            <button className="startButton" onClick={handleStart}>Start</button>
           ) : isPaused ? (
-            <button onClick={handlePause}>Pause</button>
+            <button className="pauseButton" onClick={handlePause}>Pause</button>
           ) : (
-            <button onClick={handleResume}>Resume</button>
+            <button className="resumeButton"onClick={handleResume}>Resume</button>
           )}
-          <button onClick={handleReset} disabled={!isActive}>
+          <button className="resetButton" onClick={handleReset} disabled={!isActive}>
             Reset
           </button>
         </div>

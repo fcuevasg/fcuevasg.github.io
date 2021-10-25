@@ -1,0 +1,22 @@
+.pdContainer{
+
+    margin:1vw 5vh;
+    margin-bottom: 3vh;
+    width: 80vw;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+@media (max-width: 1200px) {
+
+    .pdContainer{
+
+        margin:-1vw 5vh;
+        margin-bottom: 3vh;
+        width: 80vw;
+        font-size: 24px;
+        font-weight: 300;
+    }
+    
+    
+}

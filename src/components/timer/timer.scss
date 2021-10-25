@@ -1,0 +1,52 @@
+.stopWatch {
+  font-size: 46px;
+  margin-bottom: 5vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+  border: 2px solid lightseagreen;
+  border-radius: 5%;
+  padding:25px;
+}
+
+.stopwatch-card{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    p{
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        font-size: 100px;
+
+    }
+}
+
+.buttons {
+  button {
+    font-size: 32px;
+    padding: 10px;
+    margin: 1vh 2vw;
+    color: white;
+    &:hover{
+        transform: scale(1.1);
+        font-weight: bold;
+    }
+
+  }
+
+  .startButton ,.pauseButton, .resumeButton {
+      background-color: rgb(96, 155, 96);
+    border: 2px solid green;
+    border-radius: 10%;
+    color:rgb(220, 231, 255);
+  }
+  
+  .resetButton {
+      color:white;
+    background-color: lightcoral;
+    border: 2px solid red;
+    border-color: red;
+    border-radius: 10%;
+  }
+}

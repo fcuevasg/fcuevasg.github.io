@@ -11,12 +11,32 @@ function App() {
   return (
     <div className="App">
       <PrimeDirective content={pd}></PrimeDirective>
+      <div>
+        
+        <ul>
+          <li>What I did</li>
+          <li>What I am going to do</li>
+          <li>What it's blocked</li>
+        </ul>
+      </div>
       <Timer index={speakingIndex} setIndex={setSpeakingIndex} />
       <TeamList
-        members={["Javi", "Raul"]}
+        members={[
+          "Mike",
+          "Carles",
+          "Javi",
+          "Yon",
+          "Luismi",
+          "Fran",
+          "Ale",
+          "Diego",
+          "Jesús",
+        ]}
         speakingIndex={speakingIndex}
         setSpeakingIndex={setSpeakingIndex}
       ></TeamList>
+
+    
     </div>
   );
 }

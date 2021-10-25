@@ -1,3 +1,47 @@
-.active{
-    background-color: lightgreen;
+.active {
+  background-color: lightgreen;
 }
+
+.listContainer {
+  list-style-type: none;
+  font-size: 48px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50vw;
+  font-style: normal;
+
+}
+
+.listItem {
+  text-align: center;
+  margin-bottom: 1vh;
+  margin-right: 5vw;
+  width: 7ch;
+}
+
+@media (max-width: 1200px) {
+  .listContainer {
+    list-style-type: none;
+    font-size: 48px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75vw;
+  }
+
+}
+
+
+@media (max-width: 557px) {
+    .listContainer {
+      list-style-type: none;
+      font-size: 48px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100vw;
+      margin-left: 25vw;
+    }
+  
+  }

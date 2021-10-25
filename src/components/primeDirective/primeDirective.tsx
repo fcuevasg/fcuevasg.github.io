@@ -1,11 +1,17 @@
 import React from "react";
 
-interface PrimeDirectiveProps{
+import "./primeDirective.scss"
 
-    content:string
+interface PrimeDirectiveProps {
+  content: string;
 }
 
-
-export const PrimeDirective =  (props:PrimeDirectiveProps):React.ReactElement=>{
-    return(<h3>{props.content}</h3>)
-}
+export const PrimeDirective = (
+  props: PrimeDirectiveProps
+): React.ReactElement => {
+  return (
+    <div className="pdContainer">
+      <h3 className="pdContent">{props.content}</h3>
+    </div>
+  );
+};
