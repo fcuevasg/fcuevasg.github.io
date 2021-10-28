@@ -1,5 +1,6 @@
 .active {
-  background-color: lightgreen;
+  background-color: rgb(63, 62, 62);
+  color:white;
 }
 
 .listContainer {
@@ -10,14 +11,17 @@
   flex-wrap: wrap;
   width: 50vw;
   font-style: normal;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
 
 }
 
 .listItem {
   text-align: center;
-  margin-bottom: 1vh;
   margin-right: 5vw;
   width: 7ch;
+  margin: 0;
+  
 }
 
 @media (max-width: 1200px) {
@@ -42,6 +46,18 @@
       flex-wrap: wrap;
       width: 100vw;
       margin-left: 25vw;
+    }
+  
+  }
+
+  @media (max-width: 360px) {
+    .listContainer {
+      list-style-type: none;
+      font-size: 36px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100vw;
     }
   
   }

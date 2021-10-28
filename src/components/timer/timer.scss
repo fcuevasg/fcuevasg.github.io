@@ -1,49 +1,66 @@
+h3 {
+  font-size: 1.5rem;
+}
+
 .stopWatch {
   font-size: 46px;
-  margin-bottom: 5vh;
+  margin-bottom: 2rem;
+  padding: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-  
+
   border: 2px solid lightseagreen;
   border-radius: 5%;
-  padding:25px;
+  padding: 25px;
 }
 
-.stopwatch-card{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    p{
-        margin-top: 3vh;
-        margin-bottom: 3vh;
-        font-size: 100px;
-
-    }
+.stopwatch-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  p {
+    font-size: 3.5rem;
+  }
 }
 
 .buttons {
   button {
-    font-size: 32px;
+    font-size: 1.25rem;
     padding: 10px;
     margin: 1vh 2vw;
     color: white;
-    &:hover{
-        transform: scale(1.1);
-        font-weight: bold;
+    &:hover {
+      transform: scale(1.1);
+      font-weight: bold;
     }
+  }
+  .nextButton {
+    font-size: 1rem;
+    border:none;
+    background-color: rgb(63, 63, 63);
+    
+    
+  }
+  .prevButton {
+    font-size: 1rem;
+    border:none;
+
+    background-color: rgb(63, 63, 63);
 
   }
 
-  .startButton ,.pauseButton, .resumeButton {
-      background-color: rgb(96, 155, 96);
+  .startButton,
+  .pauseButton,
+  .resumeButton {
+    background-color: rgb(96, 155, 96);
     border: 2px solid green;
     border-radius: 10%;
-    color:rgb(220, 231, 255);
+    color: rgb(220, 231, 255);
   }
-  
+
   .resetButton {
-      color:white;
+    color: white;
     background-color: lightcoral;
     border: 2px solid red;
     border-color: red;

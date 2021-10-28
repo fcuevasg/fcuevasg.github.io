@@ -27,6 +27,8 @@ export const Timer = (props:timerProps) => {
     handlePause,
     handleResume,
     handleReset,
+    handlePrev,
+    handleNext,
   } = useTimer(0,props.setIndex,props.index);
 
   return (
@@ -45,6 +47,11 @@ export const Timer = (props:timerProps) => {
           <button className="resetButton" onClick={handleReset} disabled={!isActive}>
             Reset
           </button>
+        </div>
+        <div className="buttons">
+        <button className="prevButton" onClick={handlePrev}>Prev</button>
+        <button className="nextButton" onClick={handleNext}>Next</button>
+
         </div>
       </div>
     </div>
@@ -82,9 +89,13 @@ const useTimer = (initialState = 0, setIndex:any,index:number) => {
     setIsActive(false);
     setIsPaused(false);
     setTimer(0);
-    setIndex(index +1)
-    console.log("index=>>",index)
   };
+  const handlePrev = ()=>{
+    if(index > 0) setIndex(index -1)
+  }
+  const handleNext = ()=>{
+    setIndex(index +1)
+  }
 
   return {
     timer,
@@ -94,5 +105,7 @@ const useTimer = (initialState = 0, setIndex:any,index:number) => {
     handlePause,
     handleResume,
     handleReset,
+    handlePrev,
+    handleNext
   };
 };
