@@ -40,7 +40,7 @@
 @media (max-width: 557px) {
     .listContainer {
       list-style-type: none;
-      font-size: 48px;
+      font-size: 36px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -53,11 +53,13 @@
   @media (max-width: 360px) {
     .listContainer {
       list-style-type: none;
-      font-size: 36px;
+      font-size: 22px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       width: 100vw;
+      margin-left: 0vw;
+
     }
   
   }
