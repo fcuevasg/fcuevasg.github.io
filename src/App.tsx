@@ -6,23 +6,15 @@ import { PrimeDirective } from "./components/primeDirective/primeDirective";
 
 function App() {
   const [speakingIndex, setSpeakingIndex] = useState(0);
-  const pd =
-    "Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand. ";
+  const [members, setMembers] = useState(getMembersFromLocalStorage());
+  const pd = ` Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand. `;
+
   return (
     <div className="App">
       <Timer index={speakingIndex} setIndex={setSpeakingIndex} />
       <TeamList
-        members={[
-          "Mike",
-          "Carles",
-          "Javi",
-          "Yon",
-          "Luismi",
-          "Fran",
-          "Ale",
-          "Diego",
-          "Jesús",
-        ]}
+        members={members}
+        setMembers={setMembers}
         speakingIndex={speakingIndex}
         setSpeakingIndex={setSpeakingIndex}
       ></TeamList>
@@ -30,13 +22,41 @@ function App() {
         <ul>
           <li>What I did</li>
           <li>What I am going to do</li>
-          <li>What it's blocked</li>
+          <li>What it's (not) blocked</li>
         </ul>
       </div>
 
       <PrimeDirective content={pd} author="--Norm Kerth"></PrimeDirective>
+      <button onClick={generateRandomMembers}>generate members</button>
     </div>
   );
 }
 
 export default App;
+
+function generateRandomMembers() {
+  const mocked = [
+    "Mike",
+    "Carles",
+    "Javi",
+    "Yon",
+    "Luismi",
+    "Fran",
+    "Ale",
+    "Diego",
+    "Jesús",
+  ];
+  localStorage.setItem("members", JSON.stringify(mocked));
+}
+
+function getMembersFromLocalStorage(): string[] {
+  const localStorageMembers = localStorage.getItem("members");
+
+  if (localStorageMembers && localStorageMembers?.length > 0) {
+    return JSON.parse(localStorageMembers);
+  }
+
+  return []
+}
+/*
+ */
