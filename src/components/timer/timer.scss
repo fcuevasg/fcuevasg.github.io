@@ -2,49 +2,81 @@ h3 {
   font-size: 1.5rem;
 }
 
+.stopWatch-container {
+  padding: 0 2rem;
+  margin: 0 0 1rem;
+  width: 450px;
+}
+
 .stopWatch {
   font-size: 46px;
-  margin-bottom: 2rem;
-  padding: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 1.5rem;
+  background-color: #eee;
 
-  border: 2px solid lightseagreen;
-  border-radius: 5%;
-  padding: 25px;
+  &__timer {
+    margin-bottom: 1rem;
+  }
+
 }
 
 .stopwatch-card {
   display: flex;
+  width: 100%;
   align-items: center;
   flex-direction: column;
   p {
-    font-size: 3.5rem;
+    font-size: 2.75rem;
   }
 }
 
 .buttons {
+
+  width: 100%;
+
   button {
+
     font-size: 1.25rem;
-    padding: 10px;
-    margin: 1vh 2vw;
+    padding: 0.5rem 1rem;
     color: white;
+    transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+    cursor: pointer;
+
     &:hover {
       transform: scale(1.1);
       font-weight: bold;
     }
+
   }
-  .nextButton {
-    font-size: 1rem;
-    border: none;
-    background-color: rgb(63, 63, 63);
+
+  .nextButton,
+  .prevButton,
+  .startButton,
+  .pauseButton,
+  .resumeButton,
+  .resetButton {
+    width: calc( 50% - 1px );
   }
+
+  .nextButton,
   .prevButton {
     font-size: 1rem;
     border: none;
-
     background-color: rgb(63, 63, 63);
+  }
+
+  .prevButton,
+  .startButton,
+  .pauseButton,
+  .resumeButton {
+    margin-right: 1px;
+  }
+
+  .nextButton,
+  .resetButton {
+    margin-left: 1px;
   }
 
   .startButton,
@@ -52,66 +84,68 @@ h3 {
   .resumeButton {
     background-color: rgb(96, 155, 96);
     border: 2px solid green;
-    border-radius: 10%;
-    color: rgb(220, 231, 255);
   }
 
   .resetButton {
-    color: white;
     background-color: lightcoral;
     border: 2px solid red;
-    border-color: red;
-    border-radius: 10%;
   }
 }
 
-@media (max-width: 340px) {
-  h3 {
-    font-size: 0.75rem;
-  }
-  .stopWatch {
-    font-size: 22px;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    border: 2px solid red;
-    border-radius: 5%;
-    padding: 25px;
-  }
-
-  .stopwatch-card {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    p {
-      font-size: 1.5rem;
-    }
-  }
-
-  .buttons {
-    button {
-      font-size: 0.75rem;
-      padding: 5px;
-      margin: 1vh 2vw;
-      color: white;
-      &:hover {
-        transform: scale(1.1);
-        font-weight: bold;
-      }
-    }
-    .nextButton {
-      font-size: 0.75rem;
-      border: none;
-      background-color: rgb(63, 63, 63);
-    }
-    .prevButton {
-      font-size: 0.75rem;
-      border: none;
-
-      background-color: rgb(63, 63, 63);
-    }
+@media all and ( max-width: 449px ) {
+  .stopWatch-container {
+    min-width: 360px;
+    max-width: 360px;
   }
 }
+
+// @media (max-width: 340px) {
+//   h3 {
+//     font-size: 0.75rem;
+//   }
+//   .stopWatch {
+//     font-size: 22px;
+//     margin-bottom: 2rem;
+//     padding: 2rem;
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
+
+//     border: 2px solid red;
+//     border-radius: 5%;
+//     padding: 25px;
+//   }
+
+//   .stopwatch-card {
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
+//     p {
+//       font-size: 1.5rem;
+//     }
+//   }
+
+//   .buttons {
+//     button {
+//       font-size: 0.75rem;
+//       padding: 5px;
+//       margin: 1vh 2vw;
+//       color: white;
+//       &:hover {
+//         transform: scale(1.1);
+//         font-weight: bold;
+//       }
+//     }
+//     .nextButton {
+//       font-size: 0.75rem;
+//       border: none;
+//       background-color: rgb(63, 63, 63);
+//     }
+//     .prevButton {
+//       font-size: 0.75rem;
+//       border: none;
+
+//       background-color: rgb(63, 63, 63);
+//     }
+//   }
+// }

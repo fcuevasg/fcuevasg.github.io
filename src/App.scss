@@ -2,25 +2,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f3f5f0;
+  background-color: transparent;
   color: rgb(49, 49, 49);
 
 }
 .App {
-  padding: 1%;
   display: flex;
+  padding: 1rem 0 0;
   align-items: center;
   flex-direction: column;
-  padding: 2rem 0 0;
+  overflow-x: hidden;
+  background-color: white;
 }
 
 ul {
   list-style-type: none;
-  font-size: 28px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-bottom: 5vh;
   text-align: center;
   font-style: italic;
   list-style-type: decimal;
@@ -30,4 +30,53 @@ ul {
 li {
   margin: 1vh 2vw;
   text-align: left;
+}
+
+.daily-script,
+.generate-members {
+  padding: 0 2rem;
+}
+
+.daily-script {
+  
+  margin: 0 0 1rem;
+
+  &__list {
+    padding-left: 1rem;;
+  }
+
+}
+
+.generate-members {
+
+  width: 100%;
+  max-width: 450px;
+  margin: 0 0 2rem;
+
+  &__button {
+    width: 100%;
+    padding: 0.5rem 2rem;
+    background-color: rgb(63, 62, 62);
+    border: 2px solid rgb(63, 62, 62);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: white;
+      color: rgb(63, 62, 62);
+    }
+
+  }
+
+}
+
+@media all and ( max-width: 449px ) {
+  .daily-script,
+  .generate-members {
+    min-width: 360px;
+    max-width: 360px;
+  }
 }

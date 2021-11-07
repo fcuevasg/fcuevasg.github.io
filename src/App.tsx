@@ -12,22 +12,23 @@ function App() {
   return (
     <div className="App">
       <Timer index={speakingIndex} setIndex={setSpeakingIndex} />
+      <div className="daily-script">
+        <ul className="daily-script__list">
+          <li className="daily-script__list_item">What I did last day</li>
+          <li className="daily-script__list_item">What I am going to do today</li>
+          <li className="daily-script__list_item">I have (not) blockers</li>
+        </ul>
+      </div>
       <TeamList
         members={members}
         setMembers={setMembers}
         speakingIndex={speakingIndex}
         setSpeakingIndex={setSpeakingIndex}
       ></TeamList>
-      <div>
-        <ul>
-          <li>What I did</li>
-          <li>What I am going to do</li>
-          <li>What it's (not) blocked</li>
-        </ul>
+      <div className="generate-members">
+        <button className="generate-members__button" onClick={generateRandomMembers}>Generate Pandora members</button>
       </div>
-
       <PrimeDirective content={pd} author="--Norm Kerth"></PrimeDirective>
-      <button onClick={generateRandomMembers}>generate members</button>
     </div>
   );
 }

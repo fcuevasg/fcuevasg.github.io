@@ -1,6 +1,6 @@
 import React, {
   BaseSyntheticEvent,
-  MouseEventHandler,
+  //MouseEventHandler,
   useEffect,
   useState,
 } from "react";
@@ -36,7 +36,7 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
   }, [props.members]);
 
   const removeMember = (event: BaseSyntheticEvent) => {
-    const target = event.currentTarget.innerHTML;
+    const target = event.target.parentNode.querySelector(".memberName").innerHTML;
     props.setMembers(
       props.members.filter((memb) => {
         return memb !== target;
@@ -59,8 +59,9 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
           if (props.members && props.speakingIndex >= props.members.length)
             props.setSpeakingIndex(0);
           return (
-            <li key={member} className={classes} onClick={removeMember}>
-              {member}
+            <li key={member} className={classes}>
+              <p className="memberName">{member}</p>
+              <span className="removeMember" onClick={removeMember}>x</span>
             </li>
           );
         })}

@@ -32,26 +32,28 @@ export const Timer = (props:timerProps) => {
   } = useTimer(0,props.setIndex,props.index);
 
   return (
-    <div className="stopWatch">
-      <h3>Personal time</h3>
-      <div className="stopwatch-card">
-        <p>{formatTime(timer)}</p>
-        <div className="buttons">
-          {!isActive && !isPaused ? (
-            <button className="startButton" onClick={handleStart}>Start</button>
-          ) : isPaused ? (
-            <button className="pauseButton" onClick={handlePause}>Pause</button>
-          ) : (
-            <button className="resumeButton"onClick={handleResume}>Resume</button>
-          )}
-          <button className="resetButton" onClick={handleReset} disabled={!isActive}>
-            Reset
-          </button>
-        </div>
-        <div className="buttons">
-        <button className="prevButton" onClick={handlePrev}>Prev</button>
-        <button className="nextButton" onClick={handleNext}>Next</button>
+    <div className="stopWatch-container">
+      <div className="stopWatch">
+        {/* <h3>Personal time</h3> */}
+        <div className="stopwatch-card">
+          <p className="stopWatch__timer">{formatTime(timer)}</p>
+          <div className="buttons">
+            {!isActive && !isPaused ? (
+              <button className="startButton" onClick={handleStart}>Start</button>
+            ) : isPaused ? (
+              <button className="pauseButton" onClick={handlePause}>Pause</button>
+            ) : (
+              <button className="resumeButton"onClick={handleResume}>Resume</button>
+            )}
+            <button className="resetButton" onClick={handleReset} disabled={!isActive}>
+              Reset
+            </button>
+          </div>
+          <div className="buttons">
+          <button className="prevButton" onClick={handlePrev}>Prev</button>
+          <button className="nextButton" onClick={handleNext}>Next</button>
 
+          </div>
         </div>
       </div>
     </div>

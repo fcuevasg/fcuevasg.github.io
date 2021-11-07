@@ -1,37 +1,33 @@
-.pdContainer{
-
-    margin:1vw 5vh;
-    margin-bottom: 3vh;
-    width: 80vw;
+.pdContainer {
+    width: 450px;
+    padding: 0 2rem;
+    margin: 0 0 1rem;
     font-size: 24px;
     font-weight: 300;
-}
-.pdContent{
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: 500;
-    margin-bottom: 1rem;
-}
-.pdAuthor{
-    text-align: right;
-    font-weight: 600;
-    font-size: 1rem;
-}
-.pdTitle{
-    margin-bottom: 3vh;
-}
 
 
-@media (max-width: 1200px) {
-
-    .pdContainer{
-
-        margin:-1vw 5vh;
-        margin-bottom: 3vh;
-        width: 80vw;
-        font-size: 24px;
-        font-weight: 300;
+    .pdContent {
+        font-size: 1rem;
+        font-style: italic;
+        font-weight: 500;
+        margin-bottom: 1rem;
     }
-    
-    
+
+    .pdAuthor {
+        text-align: right;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .pdTitle {
+        margin-bottom: 3vh;
+    }
+
+}
+
+@media all and ( max-width: 449px ) {
+    .pdContainer {
+        min-width: 360px;
+        max-width: 360px;
+    }
 }
