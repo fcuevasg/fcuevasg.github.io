@@ -3,16 +3,42 @@
   padding: 0;
   box-sizing: border-box;
   background-color: transparent;
-  color: rgb(49, 49, 49);
 
 }
 .App {
   display: flex;
   padding: 1rem 0 0;
+  height: 100vh;
   align-items: center;
   flex-direction: column;
   overflow-x: hidden;
   background-color: white;
+  color: #313131;
+
+  &.dark {
+    background-color: black;
+    color: #cecece;
+
+    .generate-members {
+      
+      &__button {
+        background-color: #c0c1c1;
+        border: 2px solid #c0c1c1;
+        color: black;
+
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: black;
+          color: #c0c1c1;
+        }
+
+      }
+
+    }
+
+  }
+
 }
 
 ul {

@@ -63,6 +63,22 @@ h3 {
 
 }
 
+.dark {
+
+  .stopWatch {
+    background-color: #222;
+  }
+
+  .buttons {
+
+    img {
+      filter: invert(100%);
+    }
+
+  }
+
+}
+
 @media all and ( max-width: 449px ) {
   .stopWatch-container {
     min-width: 360px;
