@@ -1,6 +1,10 @@
 import React from "react";
 
 import "./timer.scss"
+import playIcon from './assets/play.svg';
+import pauseIcon from './assets/pause.svg';
+import resetIcon from './assets/reset.svg';
+import nextIcon from './assets/next.svg';
 
 const formatTime = (timer: number) => {
   const getSeconds = `0${timer % 60}`.slice(-2);
@@ -39,20 +43,17 @@ export const Timer = (props:timerProps) => {
           <p className="stopWatch__timer">{formatTime(timer)}</p>
           <div className="buttons">
             {!isActive && !isPaused ? (
-              <button className="startButton" onClick={handleStart}>Start</button>
+              <button className="startButton" onClick={handleStart}><img src={playIcon} alt="Play" /></button>
             ) : isPaused ? (
-              <button className="pauseButton" onClick={handlePause}>Pause</button>
+              <button className="pauseButton" onClick={handlePause}><img src={pauseIcon} alt="Pause" /></button>
             ) : (
-              <button className="resumeButton"onClick={handleResume}>Resume</button>
+              <button className="resumeButton"onClick={handleResume}><img src={playIcon} alt="Resume" /></button>
             )}
             <button className="resetButton" onClick={handleReset} disabled={!isActive}>
-              Reset
+              <img src={resetIcon} alt="Reset" />
             </button>
-          </div>
-          <div className="buttons">
-          <button className="prevButton" onClick={handlePrev}>Prev</button>
-          <button className="nextButton" onClick={handleNext}>Next</button>
-
+            <button className="prevButton" onClick={handlePrev}><img src={nextIcon} alt="Prev" /></button>
+            <button className="nextButton" onClick={handleNext}><img src={nextIcon} alt="Next" /></button>
           </div>
         </div>
       </div>
