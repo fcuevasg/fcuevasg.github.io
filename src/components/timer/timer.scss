@@ -35,14 +35,24 @@ h3 {
 .buttons {
 
   width: 100%;
+  text-align: center;
 
   button {
 
     font-size: 1.25rem;
     padding: 0.5rem 1rem;
-    color: white;
     transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
     cursor: pointer;
+    border: none;
+    background: transparent;
+
+    &.prevButton {
+      
+      img {
+        transform: rotate(180deg);
+      }
+
+    }
 
     &:hover {
       transform: scale(1.1);
@@ -51,45 +61,22 @@ h3 {
 
   }
 
-  .nextButton,
-  .prevButton,
-  .startButton,
-  .pauseButton,
-  .resumeButton,
-  .resetButton {
-    width: calc( 50% - 1px );
+}
+
+.dark {
+
+  .stopWatch {
+    background-color: #222;
   }
 
-  .nextButton,
-  .prevButton {
-    font-size: 1rem;
-    border: none;
-    background-color: rgb(63, 63, 63);
+  .buttons {
+
+    img {
+      filter: invert(100%);
+    }
+
   }
 
-  .prevButton,
-  .startButton,
-  .pauseButton,
-  .resumeButton {
-    margin-right: 1px;
-  }
-
-  .nextButton,
-  .resetButton {
-    margin-left: 1px;
-  }
-
-  .startButton,
-  .pauseButton,
-  .resumeButton {
-    background-color: rgb(96, 155, 96);
-    border: 2px solid green;
-  }
-
-  .resetButton {
-    background-color: lightcoral;
-    border: 2px solid red;
-  }
 }
 
 @media all and ( max-width: 449px ) {

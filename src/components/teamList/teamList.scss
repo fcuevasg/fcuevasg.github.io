@@ -10,6 +10,7 @@ $animation-duration: 0.4s;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  min-height: 10rem;
   max-height: 16rem;
   overflow-y: auto;
 
@@ -34,7 +35,7 @@ $animation-duration: 0.4s;
       line-height: 1;
       font-size: 1rem;
       padding: 2px 8px 6px;
-      background-color: red;
+      background-color: #d00;
       color: white;
       box-sizing: border-box;
       font-style: normal;
@@ -70,7 +71,7 @@ $animation-duration: 0.4s;
         text-align: center;
         padding: 0 0 5px;
         border: none;
-        background-color: rgb(96, 155, 96);
+        background-color: #69bf00;
         color: white;
         cursor: pointer;
         transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
@@ -153,6 +154,40 @@ $animation-duration: 0.4s;
     padding: 10px 12px;
     width: 100%;
     line-height: 19px;
+  }
+
+}
+
+.dark {
+
+  .listContainer {
+    
+    .listItem {
+
+      border-color: #222;
+      
+      &.active {
+        border-color: white;
+      }
+
+    }
+
+  }
+
+  .form-field {
+    
+    &__control {
+
+      background-color: #222;
+
+      .form-field__input,
+      .form-field__textarea {
+        border-bottom: 1px solid #666;
+        color: #ddd;
+      }
+
+    }
+
   }
 
 }
