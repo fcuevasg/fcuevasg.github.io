@@ -1,0 +1,13 @@
+.react-grid-item > .react-resizable-handle::after {
+	border-right: 2px solid rgba(0, 0, 0, 0);
+	border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+.react-resizable-handle {
+	background: transparent;
+}
+
+.responsiveContainer {
+	width: 100%;
+	background: transparent;
+}
