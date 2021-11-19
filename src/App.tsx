@@ -3,10 +3,15 @@ import "./App.scss";
 import { Timer } from "./components/timer";
 import { TeamList } from "./components/teamList";
 import { PrimeDirective } from "./components/primeDirective/primeDirective";
+import { TeamGrid } from "./components/gridLayout";
 
 function App() {
   const [speakingIndex, setSpeakingIndex] = useState(0);
   const [members, setMembers] = useState(getMembersFromLocalStorage());
+  const [isEditMode, setIsEditMode] = useState(false)
+
+
+
   const pd = ` Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand. `;
 
   return (
@@ -19,12 +24,13 @@ function App() {
           <li className="daily-script__list_item">I have (not) blockers</li>
         </ul>
       </div>
-      <TeamList
+      <button onClick={()=>setIsEditMode(!isEditMode)} >Edit mode</button>
+      {(!isEditMode) ?<TeamList
         members={members}
         setMembers={setMembers}
         speakingIndex={speakingIndex}
         setSpeakingIndex={setSpeakingIndex}
-      ></TeamList>
+      ></TeamList>:<TeamGrid></TeamGrid>}
       <div className="generate-members">
         <button className="generate-members__button" onClick={generateRandomMembers}>Generate Pandora members</button>
       </div>
