@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   background-color: transparent;
-
 }
 .App {
   display: flex;
@@ -20,7 +19,6 @@
     color: #cecece;
 
     .generate-members {
-      
       &__button {
         background-color: #c0c1c1;
         border: 2px solid #c0c1c1;
@@ -32,13 +30,9 @@
           background-color: black;
           color: #c0c1c1;
         }
-
       }
-
     }
-
   }
-
 }
 
 ul {
@@ -64,17 +58,14 @@ li {
 }
 
 .daily-script {
-  
   margin: 0 0 1rem;
 
   &__list {
-    padding-left: 1rem;;
+    padding-left: 1rem;
   }
-
 }
 
 .generate-members {
-
   width: 100%;
   max-width: 450px;
   margin: 0 0 2rem;
@@ -94,12 +85,30 @@ li {
       background-color: white;
       color: rgb(63, 62, 62);
     }
-
   }
-
 }
 
-@media all and ( max-width: 449px ) {
+.editButton {
+  padding: 1px 10px;
+  margin-bottom: 10px;
+  position: relative;
+  left: 136px;
+  width: 12ch;
+
+
+  background-color: rgb(63, 62, 62);
+  border: 2px solid rgb(63, 62, 62);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: white;
+    color: rgb(63, 62, 62);
+  }
+}
+
+@media all and (max-width: 449px) {
   .daily-script,
   .generate-members {
     min-width: 360px;

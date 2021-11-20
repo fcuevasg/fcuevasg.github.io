@@ -61,7 +61,7 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
           return (
             <li key={member} className={classes}>
               <p className="memberName">{member}</p>
-              <span className="removeMember" onClick={removeMember}>x</span>
+             
             </li>
           );
         })}
