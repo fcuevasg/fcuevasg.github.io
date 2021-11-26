@@ -11,7 +11,18 @@ function App() {
   const [isEditMode, setIsEditMode] = useState(false);
 
   const pd = ` Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand. `;
+  const [newMember, setnewMember] = useState("");
 
+  const addMember = () => {
+    if (newMember !== "") {
+      localStorage.setItem("members", JSON.stringify([...members, newMember]));
+
+      setMembers([...members, newMember]);
+    }
+  };
+  const handleKeyPress = (event: any) => {
+    if (event.code === "NumpadEnter" || event.code === "Enter") addMember();
+  };
   return (
     <div className="App">
       <Timer index={speakingIndex} setIndex={setSpeakingIndex} />
@@ -24,7 +35,10 @@ function App() {
           <li className="daily-script__list_item">I have (not) blockers</li>
         </ul>
       </div>
-      <button className="editButton"onClick={() => setIsEditMode(!isEditMode)}> {(!isEditMode)? "Edit mode":"Save"}</button>
+      <button className="editButton" onClick={() => setIsEditMode(!isEditMode)}>
+        {" "}
+        {!isEditMode ? "Edit" : "Save"}
+      </button>
       {!isEditMode ? (
         <TeamList
           members={members}
@@ -33,16 +47,33 @@ function App() {
           setSpeakingIndex={setSpeakingIndex}
         ></TeamList>
       ) : (
-        <GridLayoutResizable TeamMembers={members} setMembers={setMembers} />
+        <div>
+          <GridLayoutResizable TeamMembers={members} setMembers={setMembers} />
+          <div className="generate-members">
+            <button
+              className="generate-members__button"
+              onClick={generateRandomMembers}
+            >
+              Generate Pandora members
+            </button>
+          </div>
+          <li className="listItem inputMember">
+            <div className="form-field__control">
+              <input
+                className="form-field__input"
+                type={"text"}
+                value={newMember}
+                onChange={(event) => setnewMember(event.target.value)}
+                placeholder="New member's name"
+                onKeyDown={handleKeyPress}
+              />
+            </div>
+            <button className="addMember" onClick={addMember}>
+              +
+            </button>
+          </li>
+        </div>
       )}
-      <div className="generate-members">
-        <button
-          className="generate-members__button"
-          onClick={generateRandomMembers}
-        >
-          Generate Pandora members
-        </button>
-      </div>
       <PrimeDirective content={pd} author="--Norm Kerth"></PrimeDirective>
     </div>
   );
