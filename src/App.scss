@@ -87,12 +87,51 @@ li {
   }
 }
 
+.members-title {
+  display: inline-block;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+}
+
+.memberName,
+.memberTime {
+  display: inline-block;
+}
+
+.memberName {
+  width: 50%;
+}
+
+.memberTime {
+
+  float: right;
+
+  &.empty {
+    color: #ddd;
+  }
+
+}
+
+.resetDailyTime {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  margin-right: 10px;
+  transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+
+  img {
+    max-height: 18px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+  }
+}
+
 .editButton {
-  padding: 1px 10px;
-  margin-bottom: 10px;
-  position: relative;
-  left: 136px;
-  width: 12ch;
+  display: inline-block;
+  padding: 0 5px;
 
 
   background-color: rgb(63, 62, 62);
