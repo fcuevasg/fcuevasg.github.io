@@ -36,9 +36,10 @@ function App() {
           <li className="daily-script__list_item">What I did last day</li>
           <li className="daily-script__list_item">What I am going to do today</li>
           <li className="daily-script__list_item">I have (not) blockers</li>
+          <li className="daily-script__list_item">I think AC & SP for my task are (not) OK</li>
         </ul>
       </div>
-      <div>
+      <div className="memberList">
         <h3 className="members-title">Members</h3>
         <button className="editButton" onClick={() => setIsEditMode(!isEditMode)}>
           {" "}

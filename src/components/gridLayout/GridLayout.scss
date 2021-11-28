@@ -101,10 +101,3 @@ $animation-duration: 0.4s;
   }
 
 }
-
-@media all and ( max-width: 449px ) {
-  .listContainer {
-      min-width: 360px;
-      max-width: 360px;
-  }
-}

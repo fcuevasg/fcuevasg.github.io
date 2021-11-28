@@ -32,6 +32,12 @@
         }
       }
     }
+
+    .memberFlag {
+      &Icon[data-status="0"] {
+        background-color: #333;
+      }
+    }
   }
 }
 
@@ -53,8 +59,12 @@ li {
 }
 
 .daily-script,
-.generate-members {
+.memberList {
   padding: 0 2rem;
+}
+
+.memberList {
+  width: 450px;
 }
 
 .daily-script {
@@ -89,8 +99,8 @@ li {
 
 .members-title {
   display: inline-block;
-  padding: 0 2rem;
   margin-bottom: 1rem;
+  width: 85%;
 }
 
 .memberName,
@@ -162,9 +172,9 @@ li {
 
 .editButton {
   display: inline-block;
-  padding: 0 5px;
-
-
+  padding: 4px 5px;
+  width: 15%;
+  vertical-align: top;
   background-color: rgb(63, 62, 62);
   border: 2px solid rgb(63, 62, 62);
   color: white;
@@ -178,7 +188,8 @@ li {
 }
 
 @media all and (max-width: 449px) {
-  .daily-script {
+  .daily-script,
+  .memberList {
     min-width: 360px;
     max-width: 360px;
   }
@@ -190,7 +201,6 @@ li {
   flex-direction: row;
   display: block;
   width: 100%;
-  padding: 0 2rem;
   margin: 0 0 1rem;
   border: none;
 
