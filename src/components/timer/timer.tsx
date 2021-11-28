@@ -192,6 +192,9 @@ const useTimer = (initialState = 0, setIndex: any, index: number, members: any) 
         if (!currentMember.dailyData[today]) {
           currentMember.dailyData[today] = {time: timer};
         } else {
+          if (!currentMember.dailyData[today].time) {
+            currentMember.dailyData[today].time = 0;
+          }
           currentMember.dailyData[today].time += timer;
         }
 

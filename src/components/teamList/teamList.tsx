@@ -65,27 +65,23 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
 
   const nextMemberStatus = (index: number) => {
 
-    const currentMember = props.members[index];
-
-    if (!currentMember.dailyData) {
-      currentMember.dailyData = {};
+    if (!props.members[index].dailyData) {
+      props.members[index].dailyData = {};
     }
     
-    if (!currentMember.dailyData[today]) {
-      currentMember.dailyData[today] = {status: 0};
+    if (!props.members[index].dailyData[today]) {
+      props.members[index].dailyData[today] = {status: 0};
     }
 
-    if (!currentMember.dailyData[today].status) {
-      currentMember.dailyData[today].status = 0;
+    if (!props.members[index].dailyData[today].status) {
+      props.members[index].dailyData[today].status = 0;
     }
 
-    currentMember.dailyData[today].status += 1;
+    props.members[index].dailyData[today].status += 1;
 
-    if (currentMember.dailyData[today].status > 3) {
-      currentMember.dailyData[today].status = 0;
+    if (props.members[index].dailyData[today].status > 3) {
+      props.members[index].dailyData[today].status = 0;
     }
-
-    localStorage.setItem("scrumtools-members", JSON.stringify(props.members));
 
   };
 
