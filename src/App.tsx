@@ -53,7 +53,6 @@ function App() {
           ></TeamList>
         ) : (
           <div>
-            <GridLayoutResizable TeamMembers={members} setMembers={setMembers} />
             <div className="generate-members">
               <button
                 className="generate-members__button"
@@ -77,6 +76,7 @@ function App() {
                 +
               </button>
             </li>
+            <GridLayoutResizable TeamMembers={members} setMembers={setMembers} />
           </div>
         )}
       </div>
@@ -99,7 +99,7 @@ function generatePandoraMembers() {
     },
     {
       name: "Javi",
-      email: "franciscoj.cuevas@alten.esv",
+      email: "franciscoj.cuevas@alten.es",
     },
     {
       name: "Yon",
