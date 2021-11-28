@@ -65,7 +65,6 @@ export const Timer = (props: timerProps) => {
 
     const minutesInNumber: number = parseInt(minutes);
 
-    console.log('minutesInNumber', minutesInNumber)
     if (isActive && isPaused && minutesInNumber < 3) {
     
       setTimeout(()=>{
@@ -191,9 +190,9 @@ const useTimer = (initialState = 0, setIndex: any, index: number, members: any) 
         }
 
         if (!currentMember.dailyData[today]) {
-          currentMember.dailyData[today] = timer;
+          currentMember.dailyData[today] = {time: timer};
         } else {
-          currentMember.dailyData[today] += timer;
+          currentMember.dailyData[today].time += timer;
         }
 
         localStorage.setItem("scrumtools-members", JSON.stringify(members));

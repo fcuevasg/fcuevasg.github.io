@@ -67,7 +67,7 @@ li {
 
 .generate-members {
   width: 100%;
-  margin: 0 0 2rem;
+  margin: 0 0 1rem;
 
   &__button {
     width: 100%;
@@ -94,12 +94,19 @@ li {
 }
 
 .memberName,
-.memberTime {
+.memberTime,
+.memberTime > span,
+.memberFlag,
+.memberFlagIcon,
+.resetDailyTime {
   display: inline-block;
+  height: 19px;
+  vertical-align: middle;
 }
 
 .memberName {
-  width: 50%;
+  width: 60%;
+  cursor: pointer;
 }
 
 .memberTime {
@@ -112,6 +119,30 @@ li {
 
 }
 
+.memberFlag {
+
+  &Icon {
+    width: 19px;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+
+    &[data-status="1"] {
+      background-color: rgb(0,180,0);
+    }
+
+    &[data-status="2"] {
+      background-color: orange;
+    }
+
+    &[data-status="3"] {
+      background-color: rgb(180,0,0);
+    }
+
+  }
+
+}
+
 .resetDailyTime {
   cursor: pointer;
   border: none;
@@ -120,7 +151,7 @@ li {
   transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
 
   img {
-    max-height: 18px;
+    max-height: 19px;
   }
 
   &:hover {
@@ -147,8 +178,7 @@ li {
 }
 
 @media all and (max-width: 449px) {
-  .daily-script,
-  .generate-members {
+  .daily-script {
     min-width: 360px;
     max-width: 360px;
   }
@@ -160,8 +190,8 @@ li {
   flex-direction: row;
   display: block;
   width: 100%;
-  padding: 0;
-  margin: 0.25rem  2.25rem 0;
+  padding: 0 2rem;
+  margin: 0;
   border: none;
 
   .addMember,

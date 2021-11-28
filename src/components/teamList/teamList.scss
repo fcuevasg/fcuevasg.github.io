@@ -88,9 +88,7 @@ $animation-duration: 0.4s;
   display: inline-block;
   background: #eee;
   overflow: hidden;
-  width: calc(100% - 7rem);
-  margin-right: 0.5rem;
-  margin-left: 2.25rem;
+  width: calc(100% - 2.5rem);
 
   &::after {
     border-bottom: 2px solid $primary-color;

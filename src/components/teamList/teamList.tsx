@@ -53,7 +53,6 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
     localStorage.removeItem("scrumtools-members");
 
     localStorage.setItem("scrumtools-members", JSON.stringify(props.members));
-    console.log(`props.members`, props.members);
   }, [props.members]);
 
   const today = getFormattedDate(new Date());
@@ -61,8 +60,37 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
   const alertTime = 180;
 
   const resetDailyTime = (index: number) => {
-    props.members[index].dailyData[today] = 0;
+    props.members[index].dailyData[today].time = 0;
+  };
+
+  const nextMemberStatus = (index: number) => {
+
+    const currentMember = props.members[index];
+
+    if (!currentMember.dailyData) {
+      currentMember.dailyData = {};
+    }
+    
+    if (!currentMember.dailyData[today]) {
+      currentMember.dailyData[today] = {status: 0};
+    }
+
+    if (!currentMember.dailyData[today].status) {
+      currentMember.dailyData[today].status = 0;
+    }
+
+    currentMember.dailyData[today].status += 1;
+
+    if (currentMember.dailyData[today].status > 3) {
+      currentMember.dailyData[today].status = 0;
+    }
+
     localStorage.setItem("scrumtools-members", JSON.stringify(props.members));
+
+  };
+
+  const setMemberIndex = (index: number) => {
+    props.setSpeakingIndex(index);
   };
 
   return (
@@ -77,13 +105,16 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
             props.setSpeakingIndex(0);
           return (
             <li key={member.name} className={classes}>
-              <p className="memberName">{member.name}</p>
+              <p className="memberName" onClick={()=>{setMemberIndex(index)}}>{member.name}</p>
               {/* <span className="memberEmail">{member.email}</span> */}
-              {member.dailyData && member.dailyData[today] ? (
+              <p className="memberFlag">
+                <span className="memberFlagIcon" data-status={member.dailyData && member.dailyData[today] && member.dailyData[today].status ? member.dailyData[today].status.toString() : "0"} onClick={()=>{nextMemberStatus(index)}}></span>
+              </p>
+              {member.dailyData && member.dailyData[today] && member.dailyData[today].time ? (
                 <p className="memberTime">
                   <button className="resetDailyTime" onClick={()=>{resetDailyTime(index)}}><img src={resetIcon} alt="Reset" /></button>
-                  <span style={{"color": member.dailyData[today] >= alertTime ? "red" : ( member.dailyData[today] >= warnTime ? "orange" : "green" )}}>
-                    {getFormattedTime(member.dailyData[today]).replace(/ /g,'')}
+                  <span style={{"color": member.dailyData[today].time >= alertTime ? "red" : ( member.dailyData[today].time >= warnTime ? "orange" : "green" )}}>
+                    {getFormattedTime(member.dailyData[today].time).replace(/ /g,'')}
                   </span>
                 </p>
               ):(
