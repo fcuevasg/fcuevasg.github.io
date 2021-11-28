@@ -14,9 +14,37 @@
   background-color: white;
   color: #313131;
 
+  .themeSwitcher {
+    position: absolute;
+    width: 16px;
+    z-index: 2;
+    right: 27%;
+    transform: translateX(50%);
+    top: 2rem;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
+    }
+
+  }
+
   &.dark {
     background-color: black;
     color: #cecece;
+
+    .themeSwitcher {
+      filter: invert(100%);
+    }
 
     .generate-members {
       &__button {

@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { Timer } from "./components/timer";
 import { TeamList } from "./components/teamList";
 import { PrimeDirective } from "./components/primeDirective/primeDirective";
 import { GridLayoutResizable } from "./components/gridLayout";
+import themeIcon from "./assets/theme-icon.svg";
 
 function App() {
   const [speakingIndex, setSpeakingIndex] = useState(0);
   const [members, setMembers] = useState(getMembersFromLocalStorage());
   const [isEditMode, setIsEditMode] = useState(false);
+  const [theme, setTheme] = useState(getThemeFromLocalStorage());
 
   const pd = ` Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand. `;
   const [newMember, setnewMember] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("scrumtools-theme", theme);
+  }, [theme]);
 
   const addMember = () => {
     if (newMember !== "") {
@@ -25,18 +31,28 @@ function App() {
       setMembers([...members, newMemberData]);
     }
   };
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme( newTheme );
+  }
+  
   const handleKeyPress = (event: any) => {
     if (event.code === "NumpadEnter" || event.code === "Enter") addMember();
   };
+
   return (
-    <div className="App">
+    <div className={"App " + theme}>
+      <div className="themeSwitcher" onClick={toggleTheme}>
+        <img src={themeIcon} alt="Change theme" />
+      </div>
       <Timer index={speakingIndex} setIndex={setSpeakingIndex} members={members} />
       <div className="daily-script">
         <ul className="daily-script__list">
           <li className="daily-script__list_item">What I did last day</li>
           <li className="daily-script__list_item">What I am going to do today</li>
           <li className="daily-script__list_item">I have (not) blockers</li>
-          <li className="daily-script__list_item">I think AC & SP for my task are (not) OK</li>
+          <li className="daily-script__list_item">I think AC &amp; SP for my task are (not) OK</li>
         </ul>
       </div>
       <div className="memberList">
@@ -144,4 +160,8 @@ function getMembersFromLocalStorage(): any[] {
 
   return [];
 
+}
+
+function getThemeFromLocalStorage(): string {
+  return localStorage.getItem("scrumtools-theme") || "dark";
 }
