@@ -48,7 +48,6 @@ $animation-duration: 0.4s;
     cursor: pointer;
   }
 
-
   &.active {
     border-color: black;
 
@@ -66,6 +65,11 @@ $animation-duration: 0.4s;
 
   }
 
+}
+
+.react-grid-item.react-grid-placeholder {
+  background: #69bf00;
+  min-width: 386px;
 }
 
 .dark {

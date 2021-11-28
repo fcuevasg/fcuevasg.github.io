@@ -68,6 +68,10 @@
         background-color: #333;
       }
     }
+
+    .layoutItem.active {
+      border-color: white;
+    }
   }
 }
 
@@ -98,7 +102,7 @@ li {
 }
 
 .daily-script {
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
 
   &__list {
     padding-left: 1rem;

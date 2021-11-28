@@ -62,7 +62,7 @@ export const GridLayoutResizable = ({
     <Responsive
       isDraggable={true}
       isResizable={false}
-      style={{ width: "450px", overflowY: "scroll", minHeight: "450px"}}
+      style={{ width: "450px", overflowY: "auto", minHeight: "10rem", maxHeight: "10rem"}}
       containerPadding={[0, 0]}
       breakpoints={breakpoints}
       cols={cols}
