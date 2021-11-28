@@ -63,6 +63,37 @@ h3 {
 
 }
 
+.currentTime {
+  color: #666;
+  font-weight: 400;
+  font-size: 24px;
+  
+  &.inTime {
+    color: rgb(0,180,0);
+  }
+
+  &.closeToEnd {
+    color: orange;
+    //animation: blink-animation 1s steps(10, start) infinite
+  }
+
+  &.overTime {
+    color: rgba(180,0,0);
+  }
+
+}
+
+@keyframes blink-animation {
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    opacity: 0;
+  }
+}
+
 .dark {
 
   .stopWatch {

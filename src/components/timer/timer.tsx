@@ -58,6 +58,7 @@ export const Timer = (props: timerProps) => {
 
   const [redValue, setRedValue] = useState(0);
   const [greenValue, setGreenValue] = useState(180);
+  const [currentTime, SetCurrentTime] = useState(new Date());
 
   const formatTime = (timer: number) => {
 
@@ -81,6 +82,25 @@ export const Timer = (props: timerProps) => {
     setGreenValue(greenValue - 1);
   };
 
+  const getTimeClass = (time: Date) => {
+
+    let timeClass = "beforeTime";
+
+    if (time.getHours() >= 10) {
+      timeClass = "overTime";
+    } else if (time.getHours() === 9 && time.getMinutes() >= 30) {
+      if (time.getMinutes() >= 55) {
+        timeClass = "closeToEnd";
+      } else {
+        timeClass = "inTime";
+      }
+    }
+
+    return timeClass;
+  }
+
+  setInterval(()=>{SetCurrentTime(new Date())}, 1000);
+
   return (
     <div className="stopWatch-container">
       <div className="stopWatch">
@@ -90,6 +110,9 @@ export const Timer = (props: timerProps) => {
           style={{ color: `rgb(${redValue},${greenValue},0)` }}
         >
           <p className="stopWatch__timer">{formatTime(timer)}</p>
+          <div className={"currentTime " + getTimeClass(currentTime)}>
+            {currentTime.toLocaleTimeString()}
+          </div>
           <div className="buttons">
             {!isActive && !isPaused ? (
               <button className="startButton" onClick={handleStart}>
