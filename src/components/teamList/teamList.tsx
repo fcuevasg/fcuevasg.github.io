@@ -110,7 +110,7 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
               {member.dailyData && member.dailyData[today] && member.dailyData[today].time ? (
                 <p className="memberTime">
                   <button className="resetDailyTime" onClick={()=>{resetDailyTime(index)}}><img src={resetIcon} alt="Reset" /></button>
-                  <span style={{"color": member.dailyData[today].time >= alertTime ? "rgb(180,0,0);" : ( member.dailyData[today].time >= warnTime ? "orange" : "rgb(0,180,0);" )}}>
+                  <span style={{"color": member.dailyData[today].time >= alertTime ? "rgb(180,0,0)" : ( member.dailyData[today].time >= warnTime ? "orange" : "rgb(0,180,0)" )}}>
                     {getFormattedTime(member.dailyData[today].time).replace(/ /g,'')}
                   </span>
                 </p>

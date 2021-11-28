@@ -99,7 +99,13 @@ export const Timer = (props: timerProps) => {
     return timeClass;
   }
 
-  setInterval(()=>{SetCurrentTime(new Date())}, 1000);
+  setInterval(()=>{
+    const currentTime = new Date();
+
+    if (currentTime.getSeconds() === 0) {
+      SetCurrentTime(new Date())
+    }
+  }, 1000);
 
   return (
     <div className="stopWatch-container">
@@ -111,7 +117,7 @@ export const Timer = (props: timerProps) => {
         >
           <p className="stopWatch__timer">{formatTime(timer)}</p>
           <div className={"currentTime " + getTimeClass(currentTime)}>
-            {currentTime.toLocaleTimeString()}
+            {currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
           </div>
           <div className="buttons">
             {!isActive && !isPaused ? (
