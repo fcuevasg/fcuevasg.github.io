@@ -47,7 +47,6 @@ const getFormattedTime = (timer: number) => {
 
 export const TeamList = (props: teamListProps): React.ReactElement => {
   let classes = "";
- 
 
   useEffect(() => {
     localStorage.removeItem("scrumtools-members");
@@ -82,6 +81,8 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
     if (props.members[index].dailyData[today].status > 3) {
       props.members[index].dailyData[today].status = 0;
     }
+
+    localStorage.setItem("scrumtools-members", JSON.stringify(props.members));
 
   };
 
