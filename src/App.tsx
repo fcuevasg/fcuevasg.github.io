@@ -7,7 +7,7 @@ import { GridLayoutResizable } from "./components/gridLayout";
 import themeIcon from "./assets/theme-icon.svg";
 
 function App() {
-  const [speakingIndex, setSpeakingIndex] = useState(0);
+  const [speakingIndex, setSpeakingIndex] = useState(+getSpeakingFromLocalStorage());
   const [members, setMembers] = useState(getMembersFromLocalStorage());
   const [isEditMode, setIsEditMode] = useState(false);
   const [theme, setTheme] = useState(getThemeFromLocalStorage());
@@ -18,6 +18,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("scrumtools-theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("scrumtools-speaking", speakingIndex.toString());
+  }, [speakingIndex]);
 
   const addMember = () => {
     if (newMember !== "") {
@@ -164,4 +168,8 @@ function getMembersFromLocalStorage(): any[] {
 
 function getThemeFromLocalStorage(): string {
   return localStorage.getItem("scrumtools-theme") || "dark";
+}
+
+function getSpeakingFromLocalStorage(): string {
+  return localStorage.getItem("scrumtools-speaking") || "0";
 }
