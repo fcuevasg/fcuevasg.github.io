@@ -47,19 +47,20 @@ const getFormattedTime = (timer: number) => {
 
 export const TeamList = (props: teamListProps): React.ReactElement => {
   let classes = "";
+  
+  const today: number = +getFormattedDate(new Date());
+  const warnTime = 120;
+  const alertTime = 180;
+  let totalDailyTime = 0;
 
   useEffect(() => {
     localStorage.removeItem("scrumtools-members");
-
     localStorage.setItem("scrumtools-members", JSON.stringify(props.members));
   }, [props.members]);
 
-  const today = getFormattedDate(new Date());
-  const warnTime = 120;
-  const alertTime = 180;
-
   const resetDailyTime = (index: number) => {
     props.members[index].dailyData[today].time = 0;
+    props.setMembers(JSON.parse(JSON.stringify(props.members)));
   };
 
   const nextMemberStatus = (index: number) => {
@@ -82,7 +83,7 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
       props.members[index].dailyData[today].status = 0;
     }
 
-    localStorage.setItem("scrumtools-members", JSON.stringify(props.members));
+    props.setMembers(JSON.parse(JSON.stringify(props.members)));
 
   };
 
@@ -90,37 +91,51 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
     props.setSpeakingIndex(index);
   };
 
+  const getTotalDailyTimeClass = () => {
+    return totalDailyTime > (180 * props.members.length) ? "overTime" : totalDailyTime > (180 * props.members.length) - 300 ? "closeToEnd" : totalDailyTime > 0 ? "inTime" : ""
+  };
+
   return (
-    <ul className="listContainer">
-      {props.members &&
-        props.members.map((member, index) => {
-          index === props.speakingIndex
-            ? (classes = "active listItem")
-            : (classes = "listItem");
-          index % 2 === 0 ? (classes += " left") : (classes += " right");
-          if (props.members && props.speakingIndex >= props.members.length)
-            props.setSpeakingIndex(0);
-          return (
-            <li key={member.name} className={classes}>
-              <p className="memberName" onClick={()=>{setMemberIndex(index)}}>{member.name}</p>
-              {/* <span className="memberEmail">{member.email}</span> */}
-              <p className="memberFlag">
-                <span className="memberFlagIcon" data-status={member.dailyData && member.dailyData[today] && member.dailyData[today].status ? member.dailyData[today].status.toString() : "0"} onClick={()=>{nextMemberStatus(index)}}></span>
-              </p>
-              {member.dailyData && member.dailyData[today] && member.dailyData[today].time ? (
-                <p className="memberTime">
-                  <button className="resetDailyTime" onClick={()=>{resetDailyTime(index)}}><img src={resetIcon} alt="Reset" /></button>
-                  <span style={{"color": member.dailyData[today].time >= alertTime ? "rgb(180,0,0)" : ( member.dailyData[today].time >= warnTime ? "orange" : "rgb(0,180,0)" )}}>
-                    {getFormattedTime(member.dailyData[today].time).replace(/ /g,'')}
-                  </span>
+    <div>
+      <ul className="listContainer">
+        {props.members &&
+          props.members.map((member, index) => {
+            index === props.speakingIndex
+              ? (classes = "active listItem")
+              : (classes = "listItem");
+            index % 2 === 0 ? (classes += " left") : (classes += " right");
+            if (props.members && props.speakingIndex >= props.members.length)
+              props.setSpeakingIndex(0);
+
+            if (member.dailyData && member.dailyData[today] && member.dailyData[today].time)
+              totalDailyTime += member.dailyData[today].time;
+
+            return (
+              <li key={member.name} className={classes}>
+                <p className="memberName" onClick={()=>{setMemberIndex(index)}}>{member.name}</p>
+                {/* <span className="memberEmail">{member.email}</span> */}
+                <p className="memberFlag">
+                  <span className="memberFlagIcon" data-status={member.dailyData && member.dailyData[today] && member.dailyData[today].status ? member.dailyData[today].status.toString() : "0"} onClick={()=>{nextMemberStatus(index)}}></span>
                 </p>
-              ):(
-                <p className="memberTime empty">00:00:00</p>
-              )}
-            </li>
-          );
-        })}
-      
-    </ul>
+                {member.dailyData && member.dailyData[today] && member.dailyData[today].time ? (
+                  <p className="memberTime">
+                    <button className="resetDailyTime" onClick={()=>{resetDailyTime(index)}}><img src={resetIcon} alt="Reset" /></button>
+                    <span style={{"color": member.dailyData[today].time >= alertTime ? "rgb(180,0,0)" : ( member.dailyData[today].time >= warnTime ? "orange" : "rgb(0,180,0)" )}}>
+                      {getFormattedTime(member.dailyData[today].time).replace(/ /g,'')}
+                    </span>
+                  </p>
+                ):(
+                  <p className="memberTime empty">00:00:00</p>
+                )}
+              </li>
+            );
+          })}
+        
+      </ul>
+      <div className="totalDailyTime">
+        <h4>Total daily time:</h4>
+        <span className={"totalDailyTimeValue " + getTotalDailyTimeClass()}>{getFormattedTime(totalDailyTime).replace(/ /g,'')}</span>
+      </div>
+    </div>
   );
 };

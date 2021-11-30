@@ -115,10 +115,10 @@ export const Timer = (props: timerProps) => {
           className="stopwatch-card"
           style={{ color: `rgb(${redValue},${greenValue},0)` }}
         >
-          <p className="stopWatch__timer">{formatTime(timer)}</p>
           <div className={"currentTime " + getTimeClass(currentTime)}>
             {currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
           </div>
+          <p className="stopWatch__timer">{formatTime(timer)}</p>
           <div className="buttons">
             {!isActive && !isPaused ? (
               <button className="startButton" onClick={handleStart}>
