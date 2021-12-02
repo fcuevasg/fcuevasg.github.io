@@ -5,10 +5,13 @@ import { TeamList } from "./components/teamList";
 import { PrimeDirective } from "./components/primeDirective/primeDirective";
 import { GridLayoutResizable } from "./components/gridLayout";
 import themeIcon from "./assets/theme-icon.svg";
+import { DAILYSTATES, TeamMember } from "./components/interfaces/Interfaces";
 
 function App() {
-  const [speakingIndex, setSpeakingIndex] = useState(+getSpeakingFromLocalStorage());
-  const [members, setMembers] = useState(getMembersFromLocalStorage());
+  const [speakingIndex, setSpeakingIndex] = useState(
+    +getSpeakingFromLocalStorage()
+  );
+  const [members, setMembers] = useState<TeamMember[]>(getMembersFromLocalStorage());
   const [isEditMode, setIsEditMode] = useState(false);
   const [theme, setTheme] = useState(getThemeFromLocalStorage());
 
@@ -25,12 +28,19 @@ function App() {
 
   const addMember = () => {
     if (newMember !== "") {
-
-      const newMemberData = {
-        name: newMember
+      const newMemberData:TeamMember = {
+        name: newMember,
+        dailyData:{
+          date:new Date(),
+          status:DAILYSTATES.none,
+          time:0
+        }
       };
 
-      localStorage.setItem("scrumtools-members", JSON.stringify([...members, newMemberData]));
+      localStorage.setItem(
+        "scrumtools-members",
+        JSON.stringify([...members, newMemberData])
+      );
 
       setMembers([...members, newMemberData]);
     }
@@ -38,9 +48,9 @@ function App() {
 
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme( newTheme );
-  }
-  
+    setTheme(newTheme);
+  };
+
   const handleKeyPress = (event: any) => {
     if (event.code === "NumpadEnter" || event.code === "Enter") addMember();
   };
@@ -50,18 +60,29 @@ function App() {
       <div className="themeSwitcher" onClick={toggleTheme}>
         <img src={themeIcon} alt="Change theme" />
       </div>
-      <Timer index={speakingIndex} setIndex={setSpeakingIndex} members={members} />
+      <Timer
+        index={speakingIndex}
+        setIndex={setSpeakingIndex}
+        members={members}
+      />
       <div className="daily-script">
         <ul className="daily-script__list">
           <li className="daily-script__list_item">What I did last day</li>
-          <li className="daily-script__list_item">What I am going to do today</li>
+          <li className="daily-script__list_item">
+            What I am going to do today
+          </li>
           <li className="daily-script__list_item">I have (not) blockers</li>
-          <li className="daily-script__list_item">I think AC &amp; SP for my task are (not) OK</li>
+          <li className="daily-script__list_item">
+            I think AC &amp; SP for my task are (not) OK
+          </li>
         </ul>
       </div>
       <div className="memberList">
         <h3 className="members-title">Members</h3>
-        <button className="editButton" onClick={() => setIsEditMode(!isEditMode)}>
+        <button
+          className="editButton"
+          onClick={() => setIsEditMode(!isEditMode)}
+        >
           {" "}
           {!isEditMode ? "Edit" : "Save"}
         </button>
@@ -97,7 +118,10 @@ function App() {
                 +
               </button>
             </li>
-            <GridLayoutResizable TeamMembers={members} setMembers={setMembers} />
+            <GridLayoutResizable
+              TeamMembers={members}
+              setMembers={setMembers}
+            />
           </div>
         )}
       </div>
@@ -109,61 +133,109 @@ function App() {
 export default App;
 
 function generatePandoraMembers() {
-  const scrumToolsMembers = [
+  const pandoraMembers:TeamMember[] = [
     {
       name: "Chao",
       email: "chao.hu@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Mike",
       email: "miguel.garciac@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Javi",
       email: "franciscoj.cuevas@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Yon",
       email: "yon.cuadrado@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Luismi",
       email: "luism.rambla@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Fran",
       email: "fjose.cruz@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Ale",
       email: "alejandro.hidalgo@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Diego",
       email: "diego.ortegav@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Jesús",
       email: "jesusm.guzman@alten.es",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
     {
       name: "Martin",
       email: "martin.sollenberg@se.abb.com",
+      dailyData:{
+        date:new Date(),
+        status:DAILYSTATES.none,
+        time:0
+      }
     },
   ];
-  localStorage.setItem("scrumtools-members", JSON.stringify(scrumToolsMembers));
+  localStorage.setItem("scrumtools-members", JSON.stringify(pandoraMembers));
 }
 
-function getMembersFromLocalStorage(): any[] {
-
+function getMembersFromLocalStorage(): TeamMember[] {
   const localStorageMembers = localStorage.getItem("scrumtools-members");
 
   if (localStorageMembers && localStorageMembers?.length > 0) {
-    return JSON.parse(localStorageMembers);
+    return JSON.parse(localStorageMembers) as TeamMember[];
   }
 
   return [];
-
 }
 
 function getThemeFromLocalStorage(): string {

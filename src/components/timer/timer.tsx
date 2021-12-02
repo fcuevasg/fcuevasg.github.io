@@ -5,12 +5,13 @@ import playIcon from "./assets/play.svg";
 import pauseIcon from "./assets/pause.svg";
 import resetIcon from "./assets/reset.svg";
 import nextIcon from "./assets/next.svg";
+import { TeamMember } from "../interfaces/Interfaces";
 
 interface timerProps {
   /**Index of the list of people speaking to highlight who's turn */
   index: number;
   setIndex: any;
-  members: any;
+  members: TeamMember[];
 }
 
 const getFormattedTime = (timer: number) => {
@@ -23,7 +24,6 @@ const getFormattedTime = (timer: number) => {
 };
 
 const getFormattedDate = (date: Date) => {
-
   let dd = date.getDate();
   let mm = date.getMonth() + 1;
 
@@ -33,11 +33,11 @@ const getFormattedDate = (date: Date) => {
   let month = mm.toString();
 
   if (dd < 10) {
-    day = '0' + dd;
+    day = "0" + dd;
   }
 
   if (mm < 10) {
-    month = '0' + mm;
+    month = "0" + mm;
   }
 
   return yyyy + month + day;
@@ -61,17 +61,14 @@ export const Timer = (props: timerProps) => {
   const [currentTime, SetCurrentTime] = useState(new Date());
 
   const formatTime = (timer: number) => {
-
     const minutes = `${Math.floor(timer / 60)}`;
 
     const minutesInNumber: number = parseInt(minutes);
 
     if (isActive && isPaused && minutesInNumber < 3) {
-    
-      setTimeout(()=>{
+      setTimeout(() => {
         turnRedder();
-      },1000)
-    
+      }, 1000);
     }
 
     return getFormattedTime(timer);
@@ -83,7 +80,6 @@ export const Timer = (props: timerProps) => {
   };
 
   const getTimeClass = (time: Date) => {
-
     let timeClass = "beforeTime";
 
     if (time.getHours() >= 10) {
@@ -97,13 +93,13 @@ export const Timer = (props: timerProps) => {
     }
 
     return timeClass;
-  }
+  };
 
-  setInterval(()=>{
+  setInterval(() => {
     const currentTime = new Date();
 
     if (currentTime.getSeconds() === 0) {
-      SetCurrentTime(new Date())
+      SetCurrentTime(new Date());
     }
   }, 1000);
 
@@ -116,7 +112,10 @@ export const Timer = (props: timerProps) => {
           style={{ color: `rgb(${redValue},${greenValue},0)` }}
         >
           <div className={"currentTime " + getTimeClass(currentTime)}>
-            {currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+            {currentTime.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </div>
           <p className="stopWatch__timer">{formatTime(timer)}</p>
           <div className="buttons">
@@ -135,15 +134,27 @@ export const Timer = (props: timerProps) => {
             )}
             <button
               className="resetButton"
-              onClick={()=>{handleReset(setRedValue,setGreenValue)}}
+              onClick={() => {
+                handleReset(setRedValue, setGreenValue);
+              }}
               disabled={!isActive}
             >
               <img src={resetIcon} alt="Reset" />
             </button>
-            <button className="prevButton" onClick={()=>{handlePrev(setRedValue,setGreenValue)}}>
+            <button
+              className="prevButton"
+              onClick={() => {
+                handlePrev(setRedValue, setGreenValue);
+              }}
+            >
               <img src={nextIcon} alt="Prev" />
             </button>
-            <button className="nextButton" onClick={()=>{handleNext(setRedValue,setGreenValue)}}>
+            <button
+              className="nextButton"
+              onClick={() => {
+                handleNext(setRedValue, setGreenValue);
+              }}
+            >
               <img src={nextIcon} alt="Next" />
             </button>
           </div>
@@ -153,7 +164,12 @@ export const Timer = (props: timerProps) => {
   );
 };
 
-const useTimer = (initialState = 0, setIndex: any, index: number, members: any) => {
+const useTimer = (
+  initialState = 0,
+  setIndex: any,
+  index: number,
+  members: any
+) => {
   const [timer, setTimer] = React.useState(initialState);
   const [isActive, setIsActive] = React.useState(false);
   const [isPaused, setIsPaused] = React.useState(false);
@@ -179,14 +195,20 @@ const useTimer = (initialState = 0, setIndex: any, index: number, members: any) 
     }, 1000);
   };
 
-  const handleReset = (setRedValue:(n:number)=>void, setGreenValue:(n:number)=>void) => {
+  const handleReset = (
+    setRedValue: (n: number) => void,
+    setGreenValue: (n: number) => void
+  ) => {
     handlePause();
     setIsActive(false);
     setTimer(0);
     setRedValue(0);
     setGreenValue(180);
   };
-  const handlePrev = (setRedValue:(n:number)=>void, setGreenValue:(n:number)=>void) => {
+  const handlePrev = (
+    setRedValue: (n: number) => void,
+    setGreenValue: (n: number) => void
+  ) => {
     if (index > 0) {
       if (timer > 0) {
         saveMemberTime();
@@ -195,7 +217,10 @@ const useTimer = (initialState = 0, setIndex: any, index: number, members: any) 
       setIndex(index - 1);
     }
   };
-  const handleNext = (setRedValue:(n:number)=>void, setGreenValue:(n:number)=>void) => {
+  const handleNext = (
+    setRedValue: (n: number) => void,
+    setGreenValue: (n: number) => void
+  ) => {
     if (timer > 0) {
       saveMemberTime();
       handleReset(setRedValue, setGreenValue);
@@ -204,35 +229,22 @@ const useTimer = (initialState = 0, setIndex: any, index: number, members: any) 
   };
 
   const saveMemberTime = () => {
-
     const localStorageMembers = localStorage.getItem("scrumtools-members");
 
     if (localStorageMembers && localStorageMembers?.length > 0) {
-
-      if (members[index]){
-
-        const currentMember = members[index];
+      if (members[index]) {
+        const currentMember: TeamMember = members[index];
         const today = getFormattedDate(new Date());
-        
-        if (!currentMember.dailyData) {
-          currentMember.dailyData = {};
-        }
 
-        if (!currentMember.dailyData[today]) {
-          currentMember.dailyData[today] = {time: timer};
+        if (currentMember.dailyData.time === 0) {
+          currentMember.dailyData.time = timer;
         } else {
-          if (!currentMember.dailyData[today].time) {
-            currentMember.dailyData[today].time = 0;
-          }
-          currentMember.dailyData[today].time += timer;
+          currentMember.dailyData.time += timer;
         }
 
         localStorage.setItem("scrumtools-members", JSON.stringify(members));
-
       }
-
     }
-
   };
 
   return {
