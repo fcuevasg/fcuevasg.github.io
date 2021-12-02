@@ -1,7 +1,7 @@
 $primary-color: rgb(63, 62, 62);
 $animation-duration: 0.4s;
 
-.listContainer {
+//.listContainer {
   // width: 450px;
   // padding: 0 2rem;
   // margin: 0 0 1rem;
@@ -12,10 +12,7 @@ $animation-duration: 0.4s;
   // max-height: 16rem;
   // overflow-y: auto;
   // height: 10vh;
-
-  
-
-}
+//}
 
 
 .layoutItem {
@@ -51,7 +48,6 @@ $animation-duration: 0.4s;
     cursor: pointer;
   }
 
-
   &.active {
     border-color: black;
 
@@ -69,6 +65,11 @@ $animation-duration: 0.4s;
 
   }
 
+}
+
+.react-grid-item.react-grid-placeholder {
+  background: #69bf00;
+  min-width: 386px;
 }
 
 .dark {
@@ -103,11 +104,4 @@ $animation-duration: 0.4s;
 
   }
 
-}
-
-@media all and ( max-width: 449px ) {
-  .listContainer {
-      min-width: 360px;
-      max-width: 360px;
-  }
 }

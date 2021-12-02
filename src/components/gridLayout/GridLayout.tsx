@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent, useState } from "react";
+import React, { BaseSyntheticEvent } from "react";
 import { Responsive, Layout } from "react-grid-layout";
 
 import "@root/../../node_modules/react-grid-layout/css/styles.css";
@@ -19,15 +19,15 @@ const cols = { lg: 20, md: 16, sm: 12, xs: 8, xxs: 4 };
 
 export interface LayoutProps {
   setMembers: any;
-  TeamMembers: string[];
+  TeamMembers: any[];
 }
 
 export const GridLayoutResizable = ({
   TeamMembers,
   setMembers,
 }: LayoutProps): React.ReactElement => {
-  const [layout, setLayout] = useState(TeamMembers);
-  const auxMembers: string[] = [];
+  //const [layout, setLayout] = useState(TeamMembers);
+  const auxMembers: any[] = [];
   const handleLayoutChange = (layout: Layout[]) => {
     console.log(`layoutChanged`, layout);
 
@@ -43,7 +43,7 @@ export const GridLayoutResizable = ({
     });
 
     layout.map((item) => {
-      auxMembers.push(item.i);
+      return auxMembers.push({name: item.i});
     });
     setMembers(auxMembers);
   };
@@ -53,7 +53,7 @@ export const GridLayoutResizable = ({
       event.target.parentNode.querySelector(".memberName").innerHTML;
     setMembers(
       TeamMembers.filter((memb) => {
-        return memb !== target;
+        return memb.name !== target;
       })
     );
   };
@@ -62,7 +62,7 @@ export const GridLayoutResizable = ({
     <Responsive
       isDraggable={true}
       isResizable={false}
-      style={{ width: "450px", overflowY: "scroll", minHeight: "450px",marginLeft:"4rem"}}
+      style={{ width: "450px", overflowY: "auto", minHeight: "10rem", maxHeight: "10rem"}}
       containerPadding={[0, 0]}
       breakpoints={breakpoints}
       cols={cols}
@@ -86,10 +86,10 @@ export const GridLayoutResizable = ({
         return (
           <div
             className="layoutItem active"
-            key={member}
+            key={member.name}
             data-grid={{ x: 0, y: index, w: 3, h: 3 }}
           >
-            <p className="memberName">{member}</p>
+            <p className="memberName">{member.name}</p>
             <span className="removeMember" onClick={removeMember}>
               x
             </span>

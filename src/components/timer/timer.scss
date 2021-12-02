@@ -15,11 +15,6 @@ h3 {
   flex-direction: column;
   padding: 1.5rem;
   background-color: #eee;
-
-  &__timer {
-    margin-bottom: 1rem;
-  }
-
 }
 
 .stopwatch-card {
@@ -41,10 +36,11 @@ h3 {
 
     font-size: 1.25rem;
     padding: 0.5rem 1rem;
-    transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out, opacity 0.2s ease-in-out;
     cursor: pointer;
     border: none;
     background: transparent;
+    opacity: 0.5;
 
     &.prevButton {
       
@@ -57,10 +53,43 @@ h3 {
     &:hover {
       transform: scale(1.1);
       font-weight: bold;
+      opacity: 1;
     }
 
   }
 
+}
+
+.currentTime {
+  color: #666;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+  
+  &.inTime {
+    color: rgb(0,180,0);
+  }
+
+  &.closeToEnd {
+    color: orange;
+    //animation: blink-animation 1s steps(10, start) infinite
+  }
+
+  &.overTime {
+    color: rgba(180,0,0);
+  }
+
+}
+
+@keyframes blink-animation {
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    opacity: 0;
+  }
 }
 
 .dark {
