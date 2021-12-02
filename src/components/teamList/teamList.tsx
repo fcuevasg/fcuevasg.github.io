@@ -64,7 +64,7 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
 
   const resetDailyTime = (index: number) => {
     members[index].dailyData.time = 0;
-    setMembers(members);
+    setMembers([...members]);
 
     // setMembers(JSON.parse(JSON.stringify(members)));
   };
