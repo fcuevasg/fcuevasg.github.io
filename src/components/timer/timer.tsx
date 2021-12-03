@@ -44,6 +44,10 @@ const getFormattedDate = (date: Date) => {
 };
 
 export const Timer = (props: timerProps) => {
+  
+  const [redValue, setRedValue] = useState(0);
+  const [greenValue, setGreenValue] = useState(180);
+  
   const {
     timer,
     isActive,
@@ -54,29 +58,28 @@ export const Timer = (props: timerProps) => {
     handleReset,
     handlePrev,
     handleNext,
-  } = useTimer(0, props.setIndex, props.index, props.members);
+  } = useTimer(0, props.setIndex, props.index, props.members, setRedValue, setGreenValue);
 
-  const [redValue, setRedValue] = useState(0);
-  const [greenValue, setGreenValue] = useState(180);
   const [currentTime, SetCurrentTime] = useState(new Date());
 
   const formatTime = (timer: number) => {
-    const minutes = `${Math.floor(timer / 60)}`;
+    const minutes = Math.floor(timer / 60);
+    const seconds = parseInt(`${timer % 60}`.slice(-2));
 
-    const minutesInNumber: number = parseInt(minutes);
-
-    if (isActive && isPaused && minutesInNumber < 3) {
-      setTimeout(() => {
-        turnRedder();
-      }, 1000);
+    if (isActive && isPaused && minutes < 3) {
+    
+      setTimeout(()=>{
+        if (seconds > 0 && seconds % 10 === 0)
+          turnRedder();
+      },1000)
     }
 
     return getFormattedTime(timer);
   };
 
   const turnRedder = () => {
-    setRedValue(redValue + 1);
-    setGreenValue(greenValue - 1);
+    setRedValue(redValue + 10);
+    setGreenValue(greenValue - 10);
   };
 
   const getTimeClass = (time: Date) => {
@@ -135,24 +138,24 @@ export const Timer = (props: timerProps) => {
             <button
               className="resetButton"
               onClick={() => {
-                handleReset(setRedValue, setGreenValue);
+                handleReset()
               }}
               disabled={!isActive}
             >
               <img src={resetIcon} alt="Reset" />
             </button>
             <button
-              className="prevButton"
+              className={"prevButton" + (props.index === 0 ? " disabled" : "")}
               onClick={() => {
-                handlePrev(setRedValue, setGreenValue);
+                handlePrev()
               }}
             >
               <img src={nextIcon} alt="Prev" />
             </button>
             <button
-              className="nextButton"
+              className={"nextButton" + (props.index === props.members.length - 1 ? " disabled" : "")}
               onClick={() => {
-                handleNext(setRedValue, setGreenValue);
+                handleNext()
               }}
             >
               <img src={nextIcon} alt="Next" />
@@ -168,15 +171,22 @@ const useTimer = (
   initialState = 0,
   setIndex: any,
   index: number,
-  members: any
+  members: any,
+  setRedValue: (n:number)=>void,
+  setGreenValue: (n:number)=>void
 ) => {
   const [timer, setTimer] = React.useState(initialState);
   const [isActive, setIsActive] = React.useState(false);
   const [isPaused, setIsPaused] = React.useState(false);
   const countRef = React.useRef<any>();
+  const listContainerEl = document.getElementsByClassName('listContainer')[0];
 
   const handleStart = () => {
     setIsActive(true);
+    handleResume();
+  };
+
+  const handleResume = () => {
     setIsPaused(true);
     countRef.current = setInterval(() => {
       setTimer((timer) => timer + 1);
@@ -188,44 +198,52 @@ const useTimer = (
     setIsPaused(false);
   };
 
-  const handleResume = () => {
-    setIsPaused(true);
-    countRef.current = setInterval(() => {
-      setTimer((timer) => timer + 1);
-    }, 1000);
-  };
-
-  const handleReset = (
-    setRedValue: (n: number) => void,
-    setGreenValue: (n: number) => void
-  ) => {
+  const handleReset = () => {
     handlePause();
     setIsActive(false);
     setTimer(0);
-    setRedValue(0);
-    setGreenValue(180);
+    setTimeout(() => {
+      setRedValue(0);
+      setGreenValue(180);
+    }, 1000);
   };
-  const handlePrev = (
-    setRedValue: (n: number) => void,
-    setGreenValue: (n: number) => void
-  ) => {
+  const handlePrev = () => {
     if (index > 0) {
+
       if (timer > 0) {
         saveMemberTime();
-        handleReset(setRedValue, setGreenValue);
+        handleReset();
       }
+
       setIndex(index - 1);
+      
+      if (index > 1 && index < members.length - 2 && (members.length - index) % 2 === 0) {
+        listContainerEl.scroll({
+          top: listContainerEl.scrollTop - 96,
+          behavior: 'smooth'
+        });
+      }
+
     }
   };
-  const handleNext = (
-    setRedValue: (n: number) => void,
-    setGreenValue: (n: number) => void
-  ) => {
-    if (timer > 0) {
-      saveMemberTime();
-      handleReset(setRedValue, setGreenValue);
+  const handleNext = () => {
+    if (index < members.length - 1) {
+
+      if (timer > 0) {
+        saveMemberTime();
+        handleReset();
+      }
+
+      setIndex(index + 1);
+
+      if (index > 1 && index < members.length - 2 && index % 2 === 0) {
+        listContainerEl.scroll({
+          top: listContainerEl.scrollTop + 96,
+          behavior: 'smooth'
+        });
+      }
+
     }
-    setIndex(index + 1);
   };
 
   const saveMemberTime = () => {
