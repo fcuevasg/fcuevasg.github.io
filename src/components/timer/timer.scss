@@ -22,6 +22,7 @@ h3 {
   width: 100%;
   align-items: center;
   flex-direction: column;
+  transition: color 0.5s ease-in-out;
   p {
     font-size: 2.75rem;
   }
@@ -41,6 +42,14 @@ h3 {
     border: none;
     background: transparent;
     opacity: 0.5;
+
+    &.prevButton,
+    &.nextButton {
+      &.disabled {
+        opacity: 0.25;
+        pointer-events: none;
+      }
+    }
 
     &.prevButton {
       
