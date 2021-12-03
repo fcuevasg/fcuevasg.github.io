@@ -13,6 +13,7 @@ $animation-duration: 0.4s;
   min-height: 10rem;
   max-height: 16rem;
   overflow-y: auto;
+  border-bottom: 2px dashed #eee;
 
   .listItem {
     position: relative;
@@ -157,6 +158,8 @@ $animation-duration: 0.4s;
 .dark {
 
   .listContainer {
+
+    border-bottom: 2px dashed #222;
     
     .listItem {
 
