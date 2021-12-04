@@ -161,6 +161,20 @@ li {
     color: #ddd;
   }
 
+  span {
+    &.inTime {
+      color: rgb(0,180,0);
+    }
+
+    &.closeToEnd {
+      color: orange;
+    }
+
+    &.overTime {
+      color: rgb(180,0,0);
+    }
+  }
+
 }
 
 .memberFlag {

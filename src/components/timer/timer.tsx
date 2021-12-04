@@ -6,42 +6,15 @@ import pauseIcon from "./assets/pause.svg";
 import resetIcon from "./assets/reset.svg";
 import nextIcon from "./assets/next.svg";
 import { TeamMember } from "../interfaces/Interfaces";
+import { getFormattedDate, getFormattedTime } from "../../Helpers";
 
 interface timerProps {
   /**Index of the list of people speaking to highlight who's turn */
   index: number;
   setIndex: any;
   members: TeamMember[];
+  setMembers: any;
 }
-
-const getFormattedTime = (timer: number) => {
-  const getSeconds = `0${timer % 60}`.slice(-2);
-  const minutes = `${Math.floor(timer / 60)}`;
-  const getMinutes = `0${(minutes as unknown as number) % 60}`.slice(-2);
-  const getHours = `0${Math.floor(timer / 3600)}`.slice(-2);
-
-  return `${getHours} : ${getMinutes} : ${getSeconds}`;
-};
-
-const getFormattedDate = (date: Date) => {
-  let dd = date.getDate();
-  let mm = date.getMonth() + 1;
-
-  const yyyy = date.getFullYear();
-
-  let day = dd.toString();
-  let month = mm.toString();
-
-  if (dd < 10) {
-    day = "0" + dd;
-  }
-
-  if (mm < 10) {
-    month = "0" + mm;
-  }
-
-  return yyyy + month + day;
-};
 
 export const Timer = (props: timerProps) => {
   
@@ -58,7 +31,7 @@ export const Timer = (props: timerProps) => {
     handleReset,
     handlePrev,
     handleNext,
-  } = useTimer(0, props.setIndex, props.index, props.members, setRedValue, setGreenValue);
+  } = useTimer(0, props.setIndex, props.index, props.members, props.setMembers, setRedValue, setGreenValue);
 
   const [currentTime, SetCurrentTime] = useState(new Date());
 
@@ -172,6 +145,7 @@ const useTimer = (
   setIndex: any,
   index: number,
   members: any,
+  setMembers: any,
   setRedValue: (n:number)=>void,
   setGreenValue: (n:number)=>void
 ) => {
@@ -252,14 +226,22 @@ const useTimer = (
     if (localStorageMembers && localStorageMembers?.length > 0) {
       if (members[index]) {
         const currentMember: TeamMember = members[index];
-        const today = getFormattedDate(new Date());
+        const today: number = parseInt(getFormattedDate(new Date()));
 
-        if (currentMember.dailyData.time === 0) {
-          currentMember.dailyData.time = timer;
-        } else {
-          currentMember.dailyData.time += timer;
+        if (!currentMember.dailyData[today]) {
+          currentMember.dailyData[today] = {
+           time: 0,
+           status: 0
+          }
         }
 
+        if (currentMember.dailyData[today].time === 0) {
+          currentMember.dailyData[today].time = timer;
+        } else {
+          currentMember.dailyData[today].time += timer;
+        }
+
+        setMembers([...members]);
         localStorage.setItem("scrumtools-members", JSON.stringify(members));
       }
     }
