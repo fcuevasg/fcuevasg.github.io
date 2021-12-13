@@ -8,6 +8,7 @@ import "./teamList.scss";
 
 import resetIcon from "../timer/assets/reset.svg";
 import { DAILYSTATES, TeamMember } from "../interfaces/Interfaces";
+import { getFormattedDate, getFormattedTime } from "../../Helpers";
 
 interface teamListProps {
   members: TeamMember[];
@@ -16,81 +17,69 @@ interface teamListProps {
   setSpeakingIndex: any;
 }
 
-const getFormattedDate = (date: Date) => {
-  let dd = date.getDate();
-  let mm = date.getMonth() + 1;
-
-  const yyyy = date.getFullYear();
-
-  let day = dd.toString();
-  let month = mm.toString();
-
-  if (dd < 10) {
-    day = "0" + dd;
-  }
-
-  if (mm < 10) {
-    month = "0" + mm;
-  }
-
-  return yyyy + month + day;
-};
-
-const getFormattedTime = (timer: number) => {
-  const getSeconds = `0${timer % 60}`.slice(-2);
-  const minutes = `${Math.floor(timer / 60)}`;
-  const getMinutes = `0${(minutes as unknown as number) % 60}`.slice(-2);
-  const getHours = `0${Math.floor(timer / 3600)}`.slice(-2);
-
-  return `${getHours} : ${getMinutes} : ${getSeconds}`;
-};
-
 export const TeamList = (props: teamListProps): React.ReactElement => {
   const { members, setMembers } = props;
-  useEffect(() => {
-    console.log(`members`, members);
-  }, [members]);
-
-  let classes = "";
-
-  const warnTime = 120;
-  const alertTime = 180;
+  
+  let listItemClasses = "";
   let totalDailyTime = 0;
 
+  const today: number = parseInt(getFormattedDate(new Date()));
+  
+  const warnTime = 120;
+  const alertTime = 180;
+  const closeToEndTime = 300;
+  
   useEffect(() => {
+    console.log(`members`, members);
     localStorage.removeItem("scrumtools-members");
     localStorage.setItem("scrumtools-members", JSON.stringify(members));
   }, [members]);
 
   const resetDailyTime = (index: number) => {
-    members[index].dailyData.time = 0;
+    members[index].dailyData[today].time = 0;
     setMembers([...members]);
-
-    // setMembers(JSON.parse(JSON.stringify(members)));
   };
 
   const nextMemberStatus = (index: number) => {
-    members[index].dailyData.status += 1;
-    if (members[index].dailyData.status > DAILYSTATES.BLOCKED) {
-      members[index].dailyData.status = DAILYSTATES.none;
+    members[index].dailyData[today].status += 1;
+    if (members[index].dailyData[today].status > DAILYSTATES.BLOCKED) {
+      members[index].dailyData[today].status = DAILYSTATES.none;
     }
 
     setMembers([...members]);
   };
 
-  const setMemberIndex = (index: number) => {
-    props.setSpeakingIndex(index);
-  };
-
   const getTotalDailyTimeClass = () => {
-    return totalDailyTime > 180 * members.length
+    return totalDailyTime > alertTime * members.length
       ? "overTime"
-      : totalDailyTime > 180 * members.length - 300
+      : totalDailyTime > alertTime * members.length - closeToEndTime
       ? "closeToEnd"
       : totalDailyTime > 0
       ? "inTime"
       : "";
   };
+  
+  const getMemberTimeClass = (member: TeamMember) => {
+
+    if (!member.dailyData[today] || member.dailyData[today].time === 0)
+      return "";
+
+    return member.dailyData[today].time >= alertTime
+      ? "overTime"
+      : member.dailyData[today].time >= warnTime
+        ? "closeToEnd"
+        : "inTime";
+  };
+
+  const getMemberTodayTime = (member: TeamMember) => {
+
+    let memberTodayTime = 0;
+
+    if (member.dailyData[today])
+      memberTodayTime = member.dailyData[today].time || 0;
+
+    return getFormattedTime(memberTodayTime).replace(/ /g, "");
+  }
 
   return (
     <div>
@@ -98,19 +87,26 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
         {members &&
           members.map((member, index) => {
             index === props.speakingIndex
-              ? (classes = "active listItem")
-              : (classes = "listItem");
-            index % 2 === 0 ? (classes += " left") : (classes += " right");
+              ? (listItemClasses = "active listItem")
+              : (listItemClasses = "listItem");
+            index % 2 === 0 ? (listItemClasses += " left") : (listItemClasses += " right");
             if (members && props.speakingIndex >= members.length)
               props.setSpeakingIndex(0);
-            totalDailyTime += member.dailyData.time;
+
+            if (!member.dailyData)
+              member.dailyData = {
+                [today]: {status: 0, time: 0}
+              };
+
+            if (member.dailyData[today] && member.dailyData[today].time)
+              totalDailyTime += member.dailyData[today].time;
 
             return (
-              <li key={member.name} className={classes}>
+              <li key={member.name} className={listItemClasses}>
                 <p
                   className="memberName"
                   onClick={() => {
-                    setMemberIndex(index);
+                    props.setSpeakingIndex(index);
                   }}
                 >
                   {member.name}
@@ -119,13 +115,9 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
                 <p className="memberFlag">
                   <span
                     className="memberFlagIcon"
-                    data-status={member.dailyData.status.toString()}
+                    data-status={member.dailyData[today] ? member.dailyData[today].status ? member.dailyData[today].status.toString() : "0" : "0"}
                     onClick={() => {
                       nextMemberStatus(index);
-                      console.log(
-                        `member.dailyData.status`,
-                        member.dailyData.status
-                      );
                     }}
                   ></span>
                 </p>
@@ -140,16 +132,9 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
                     <img src={resetIcon} alt="Reset" />
                   </button>
                   <span
-                    style={{
-                      color:
-                        member.dailyData.time >= alertTime
-                          ? "rgb(180,0,0)"
-                          : member.dailyData.time >= warnTime
-                          ? "orange"
-                          : "rgb(0,180,0)",
-                    }}
+                    className={getMemberTimeClass(member)}
                   >
-                    {getFormattedTime(member.dailyData.time).replace(/ /g, "")}
+                    {getMemberTodayTime(member)}
                   </span>
                 </p>
               </li>

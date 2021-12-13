@@ -5,7 +5,8 @@ import { TeamList } from "./components/teamList";
 import { PrimeDirective } from "./components/primeDirective/primeDirective";
 import { GridLayoutResizable } from "./components/gridLayout";
 import themeIcon from "./assets/theme-icon.svg";
-import { DAILYSTATES, TeamMember } from "./components/interfaces/Interfaces";
+import { TeamMember } from "./components/interfaces/Interfaces";
+import { getFormattedDate } from "./Helpers";
 
 function App() {
   const [speakingIndex, setSpeakingIndex] = useState(
@@ -17,6 +18,7 @@ function App() {
 
   const pd = ` Regardless of what we discover, we understand and truly believe that everyone did the best job they could, given what they knew at the time, their skills and abilities, the resources available, and the situation at hand. `;
   const [newMember, setnewMember] = useState("");
+  const today = parseInt(getFormattedDate(new Date()));
 
   useEffect(() => {
     localStorage.setItem("scrumtools-theme", theme);
@@ -26,14 +28,17 @@ function App() {
     localStorage.setItem("scrumtools-speaking", speakingIndex.toString());
   }, [speakingIndex]);
 
+  useEffect(() => {
+    const newMembers = getMembersFromLocalStorage();
+    setMembers(newMembers);
+  }, [isEditMode])
+
   const addMember = () => {
     if (newMember !== "") {
-      const newMemberData:TeamMember = {
+      const newMemberData: TeamMember = {
         name: newMember,
-        dailyData:{
-          date:new Date(),
-          status:DAILYSTATES.none,
-          time:0
+        dailyData: {
+          [today] : {time: 0, status: 0}
         }
       };
 
@@ -64,6 +69,7 @@ function App() {
         index={speakingIndex}
         setIndex={setSpeakingIndex}
         members={members}
+        setMembers={setMembers}
       />
       <div className="daily-script">
         <ul className="daily-script__list">
@@ -133,95 +139,78 @@ function App() {
 export default App;
 
 function generatePandoraMembers() {
+
+  const today = parseInt(getFormattedDate(new Date()));
+
   const pandoraMembers:TeamMember[] = [
     {
       name: "Chao",
       email: "chao.hu@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Mike",
       email: "miguel.garciac@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Javi",
       email: "franciscoj.cuevas@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Yon",
       email: "yon.cuadrado@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Luismi",
       email: "luism.rambla@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Fran",
       email: "fjose.cruz@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Ale",
       email: "alejandro.hidalgo@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Diego",
       email: "diego.ortegav@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Jesús",
       email: "jesusm.guzman@alten.es",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Martin",
       email: "martin.sollenberg@se.abb.com",
-      dailyData:{
-        date:new Date(),
-        status:DAILYSTATES.none,
-        time:0
+      dailyData: {
+        [today] : {time: 0, status: 0}
       }
     },
   ];
