@@ -145,70 +145,60 @@ function generatePandoraMembers() {
   const pandoraMembers:TeamMember[] = [
     {
       name: "Chao",
-      email: "chao.hu@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Mike",
-      email: "miguel.garciac@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Javi",
-      email: "franciscoj.cuevas@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Yon",
-      email: "yon.cuadrado@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Luismi",
-      email: "luism.rambla@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Fran",
-      email: "fjose.cruz@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Ale",
-      email: "alejandro.hidalgo@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Diego",
-      email: "diego.ortegav@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Jesús",
-      email: "jesusm.guzman@alten.es",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
     },
     {
       name: "Martin",
-      email: "martin.sollenberg@se.abb.com",
       dailyData: {
         [today] : {time: 0, status: 0}
       }
