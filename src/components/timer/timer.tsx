@@ -58,10 +58,39 @@ export const Timer = (props: timerProps) => {
   const getTimeClass = (time: Date) => {
     let timeClass = "beforeTime";
 
-    if (time.getHours() >= 10) {
+    let dailyConfig = {
+      "dailyStartHours": 9,
+      "dailyStartMinutes": 30,
+      "dailyDuration": 30,
+    };
+
+    const localStorageConfigString = localStorage.getItem("scrumtools-config");
+
+    if (localStorageConfigString && localStorageConfigString?.length > 0) {
+      dailyConfig = JSON.parse(localStorageConfigString);
+    } else {
+      localStorage.setItem("scrumtools-config", JSON.stringify(dailyConfig));
+    }
+
+    let dailyEndHours = dailyConfig.dailyStartHours;
+    let dailyEndMinutes = dailyConfig.dailyStartMinutes + dailyConfig.dailyDuration;
+    if(dailyEndMinutes > 59){
+      const extraHours = Math.floor(dailyEndMinutes/60);
+      dailyEndHours += extraHours;
+      dailyEndMinutes = dailyEndMinutes - (extraHours*60);
+    }
+
+    let dailyCloseToEndHours = dailyEndHours;
+    let dailyCloseToEndMinutes = dailyEndMinutes - 5;
+    if(dailyCloseToEndMinutes < 0) {
+      dailyCloseToEndHours--;
+      dailyCloseToEndMinutes += 60;
+    }
+
+    if (time.getHours() > dailyEndHours || (time.getHours() === dailyEndHours && time.getMinutes() >= dailyEndMinutes)) {
       timeClass = "overTime";
-    } else if (time.getHours() === 9 && time.getMinutes() >= 30) {
-      if (time.getMinutes() >= 55) {
+    } else if ((time.getHours() === dailyConfig.dailyStartHours && time.getMinutes() >= dailyConfig.dailyStartMinutes) || (time.getHours() === dailyEndHours && time.getMinutes() < dailyEndMinutes)) {
+      if (time.getHours() === dailyCloseToEndHours && time.getMinutes() >= dailyCloseToEndMinutes) {
         timeClass = "closeToEnd";
       } else {
         timeClass = "inTime";
@@ -230,8 +259,8 @@ const useTimer = (
 
         if (!currentMember.dailyData[today]) {
           currentMember.dailyData[today] = {
-           time: 0,
-           status: 0
+            time: 0,
+            status: 0
           }
         }
 

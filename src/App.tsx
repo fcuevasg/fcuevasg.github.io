@@ -101,14 +101,14 @@ function App() {
           ></TeamList>
         ) : (
           <div>
-            <div className="generate-members">
+            {/* <div className="generate-members">
               <button
                 className="generate-members__button"
                 onClick={generatePandoraMembers}
               >
                 Generate Pandora members
               </button>
-            </div>
+            </div> */}
             <li className="listItem inputMember">
               <div className="form-field__control">
                 <input
@@ -145,73 +145,43 @@ function generatePandoraMembers() {
   const pandoraMembers:TeamMember[] = [
     {
       name: "Chao",
-      email: "chao.hu@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Mike",
-      email: "miguel.garciac@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Javi",
-      email: "franciscoj.cuevas@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Yon",
-      email: "yon.cuadrado@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Luismi",
-      email: "luism.rambla@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Fran",
-      email: "fjose.cruz@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Ale",
-      email: "alejandro.hidalgo@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Diego",
-      email: "diego.ortegav@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Jesús",
-      email: "jesusm.guzman@alten.es",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Martin",
-      email: "martin.sollenberg@se.abb.com",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
   ];
   localStorage.setItem("scrumtools-members", JSON.stringify(pandoraMembers));
