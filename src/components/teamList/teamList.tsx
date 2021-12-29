@@ -41,6 +41,13 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
   };
 
   const nextMemberStatus = (index: number) => {
+
+    if (!members[index].dailyData[today]) {
+      members[index].dailyData = {
+        [today]: {status: 0, time: 0}
+      };
+    }
+
     members[index].dailyData[today].status += 1;
     if (members[index].dailyData[today].status > DAILYSTATES.BLOCKED) {
       members[index].dailyData[today].status = DAILYSTATES.none;
