@@ -27,8 +27,17 @@ A JSON string to store all members data, can be overriden with a JSON that follo
                 name: "Member 2",
                 dailyData: {}
             },
+            },
+            {
+                name: "Member 3",
+                dailyData: {}
+            },
             ...
         ]
+
+To copy and paste use this:
+
+        [{"name":"Member 1","dailyData":{}},{"name":"Member 2","dailyData":{}},{"name":"Member 3","dailyData":{}}]
 
 ## `scrumtools-config`
 
@@ -39,3 +48,7 @@ A JSON string to store daily time params, can be overriden with a JSON that foll
             "dailyStartMinutes": 30,
             "dailyDuration": 30
         }
+
+To copy and paste use this:
+
+        {"dailyStartHours":9,"dailyStartMinutes":30,"dailyDuration":30}
