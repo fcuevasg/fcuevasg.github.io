@@ -101,14 +101,14 @@ function App() {
           ></TeamList>
         ) : (
           <div>
-            <div className="generate-members">
+            {/* <div className="generate-members">
               <button
                 className="generate-members__button"
                 onClick={generatePandoraMembers}
               >
                 Generate Pandora members
               </button>
-            </div>
+            </div> */}
             <li className="listItem inputMember">
               <div className="form-field__control">
                 <input
@@ -145,63 +145,43 @@ function generatePandoraMembers() {
   const pandoraMembers:TeamMember[] = [
     {
       name: "Chao",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Mike",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Javi",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Yon",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Luismi",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Fran",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Ale",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Diego",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Jesús",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
     {
       name: "Martin",
-      dailyData: {
-        [today] : {time: 0, status: 0}
-      }
+      dailyData: {}
     },
   ];
   localStorage.setItem("scrumtools-members", JSON.stringify(pandoraMembers));

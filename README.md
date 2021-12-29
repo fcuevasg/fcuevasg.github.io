@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# SCRUM Tools
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Timer & member list to ease Daily Standup meetings.
 
-## Available Scripts
+## Steps to run
 
 In the project directory, you can run:
 
-### `yarn start`
+1. `yarn` to build the project
+2. `yarn start` to run the app in the development mode
+3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Local Storage
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This project uses Local Storage to store data (for the moment). Below you'll find the most important ones:
 
-### `yarn test`
+## `scrumtools-members`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A JSON string to store all members data, can be overriden with a JSON that follow this structure:
 
-### `yarn build`
+        [
+            {
+                name: "Member 1",
+                dailyData: {}
+            },
+            {
+                name: "Member 2",
+                dailyData: {}
+            },
+            },
+            {
+                name: "Member 3",
+                dailyData: {}
+            },
+            ...
+        ]
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To copy and paste use this:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+        [{"name":"Member 1","dailyData":{}},{"name":"Member 2","dailyData":{}},{"name":"Member 3","dailyData":{}}]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## `scrumtools-config`
 
-### `yarn eject`
+A JSON string to store daily time params, can be overriden with a JSON that follow this structure:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+        {
+            "dailyStartHours": 9,
+            "dailyStartMinutes": 30,
+            "dailyDuration": 30
+        }
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To copy and paste use this:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+        {"dailyStartHours":9,"dailyStartMinutes":30,"dailyDuration":30}
