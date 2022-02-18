@@ -52,3 +52,13 @@ A JSON string to store daily time params, can be overriden with a JSON that foll
 To copy and paste use this:
 
         {"dailyStartHours":9,"dailyStartMinutes":30,"dailyDuration":30}
+        
+### TODO:
+- [ ] Settings page  
+  - [ ] JSON loader for members
+  - [ ] Swapping from Retro / refinement
+  - [ ] Theme swapping
+- [ ] Times for daily
+  - [ ] Start-end time
+  - [ ] Member time          
+
