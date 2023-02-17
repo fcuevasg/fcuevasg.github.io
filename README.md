@@ -62,3 +62,7 @@ To copy and paste use this:
   - [ ] Start-end time
   - [ ] Member time          
 
+##Schema
+
+
+[DB schema](./Schema.md)
