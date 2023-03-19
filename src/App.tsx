@@ -38,7 +38,7 @@ function App() {
       const newMemberData: TeamMember = {
         name: newMember,
         dailyData: {
-          [today] : {time: 0, status: 0}
+          [today] : {time: 0, status: 0, emotionalStatus: 0}
         }
       };
 
