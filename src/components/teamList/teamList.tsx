@@ -7,7 +7,7 @@ import React, {
 import "./teamList.scss";
 
 import resetIcon from "../timer/assets/reset.svg";
-import { DAILYSTATES, TeamMember } from "../interfaces/Interfaces";
+import { DAILYSTATES, EMOTIONALSTATES, TeamMember } from "../interfaces/Interfaces";
 import { getFormattedDate, getFormattedTime } from "../../Helpers";
 
 interface teamListProps {
@@ -44,13 +44,28 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
 
     if (!members[index].dailyData[today]) {
       members[index].dailyData = {
-        [today]: {status: 0, time: 0}
+        [today]: {status: 0, time: 0, emotionalStatus: 0}
       };
     }
 
     members[index].dailyData[today].status += 1;
     if (members[index].dailyData[today].status > DAILYSTATES.BLOCKED) {
       members[index].dailyData[today].status = DAILYSTATES.none;
+    }
+
+    setMembers([...members]);
+  };
+
+  const nextMemberEmotionalStatus = (index: number) => {
+    if (!members[index].dailyData[today]) {
+      members[index].dailyData = {
+        [today]: {status: 0, time: 0, emotionalStatus: 0}
+      };
+    }
+
+    members[index].dailyData[today].emotionalStatus += 1;
+    if (members[index].dailyData[today].emotionalStatus > EMOTIONALSTATES.DOWN) {
+      members[index].dailyData[today].emotionalStatus = EMOTIONALSTATES.none;
     }
 
     setMembers([...members]);
@@ -102,7 +117,7 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
 
             if (!member.dailyData)
               member.dailyData = {
-                [today]: {status: 0, time: 0}
+                [today]: {status: 0, time: 0, emotionalStatus: 0}
               };
 
             if (member.dailyData[today] && member.dailyData[today].time)
@@ -125,6 +140,16 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
                     data-status={member.dailyData[today] ? member.dailyData[today].status ? member.dailyData[today].status.toString() : "0" : "0"}
                     onClick={() => {
                       nextMemberStatus(index);
+                    }}
+                  ></span>
+                </p>
+
+                <p className="memberEmotionFlag">
+                  <span
+                    className="memberEmotionFlagIcon"
+                    data-emotional-status={member.dailyData[today] ? member.dailyData[today].emotionalStatus ? member.dailyData[today].emotionalStatus.toString() : "0" : "0"}
+                    onClick={() => {
+                      nextMemberEmotionalStatus(index);
                     }}
                   ></span>
                 </p>

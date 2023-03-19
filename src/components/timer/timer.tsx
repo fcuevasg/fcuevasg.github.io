@@ -260,7 +260,8 @@ const useTimer = (
         if (!currentMember.dailyData[today]) {
           currentMember.dailyData[today] = {
             time: 0,
-            status: 0
+            status: 0,
+            emotionalStatus: 0,
           }
         }
 
