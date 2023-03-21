@@ -63,9 +63,14 @@
       }
     }
 
-    .memberFlag,
-    .memberEmotionFlag {
+    .memberFlag {
       &Icon[data-status="0"] {
+        background-color: #333;
+      }
+    }
+
+    .memberEmotionFlag {
+      &Icon[data-emotional-status="0"] {
         background-color: #333;
       }
     }
@@ -152,7 +157,7 @@ li {
 }
 
 .memberName {
-  width: 60%;
+  width: 58%;
   cursor: pointer;
 }
 
@@ -217,7 +222,6 @@ li {
 
   &Icon {
 
-    background-color: #333;
     background-repeat: no-repeat;
     background-size: cover;
 
