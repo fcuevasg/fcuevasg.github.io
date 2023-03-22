@@ -15,7 +15,7 @@ const breakpoints: IGridBreakpoints = {
   xs: 700,
   xxs: 0,
 };
-const cols = { lg: 20, md: 16, sm: 12, xs: 8, xxs: 4 };
+const cols = { lg: 1, md: 1, sm: 1, xs: 1, xxs: 1 };
 
 export interface LayoutProps {
   setMembers: any;
@@ -62,7 +62,7 @@ export const GridLayoutResizable = ({
     <Responsive
       isDraggable={true}
       isResizable={false}
-      style={{ width: "450px", overflowY: "auto", minHeight: "10rem", maxHeight: "10rem"}}
+      style={{ width: "450px", overflowY: "auto", overflowX:"hidden", minHeight: "10rem", maxHeight: "10rem"}}
       containerPadding={[0, 0]}
       breakpoints={breakpoints}
       cols={cols}
