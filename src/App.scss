@@ -69,6 +69,12 @@
       }
     }
 
+    .memberEmotionFlag {
+      &Icon[data-emotional-status="0"] {
+        background-color: #333;
+      }
+    }
+
     .layoutItem.active {
       border-color: white;
     }
@@ -141,7 +147,9 @@ li {
 .memberTime,
 .memberTime > span,
 .memberFlag,
+.memberEmotionFlag,
 .memberFlagIcon,
+.memberEmotionFlagIcon,
 .resetDailyTime {
   display: inline-block;
   height: 19px;
@@ -149,7 +157,7 @@ li {
 }
 
 .memberName {
-  width: 60%;
+  width: 58%;
   cursor: pointer;
 }
 
@@ -177,14 +185,20 @@ li {
 
 }
 
-.memberFlag {
-
+.memberFlag,
+.memberEmotionFlag {
   &Icon {
     display: block;
     width: 19px;
     border-radius: 50%;
     background-color: #ddd;
     cursor: pointer;
+  }
+}
+
+.memberFlag {
+
+  &Icon {
 
     &[data-status="1"] {
       background-color: rgb(0,180,0);
@@ -196,6 +210,43 @@ li {
 
     &[data-status="3"] {
       background-color: rgb(180,0,0);
+    }
+
+  }
+
+}
+
+.memberEmotionFlag {
+
+  margin-left: 5px;
+
+  &Icon {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &[data-emotional-status="1"] {
+      background-image: url(assets/emotional-status/01-good.svg);
+    }
+
+    &[data-emotional-status="2"] {
+      background-image: url(assets/emotional-status/02-bad.svg);
+    }
+
+    &[data-emotional-status="3"] {
+      background-image: url(assets/emotional-status/03-sick.svg);
+    }
+
+    &[data-emotional-status="4"] {
+      background-image: url(assets/emotional-status/04-apathetic.svg);
+    }
+
+    &[data-emotional-status="5"] {
+      background-image: url(assets/emotional-status/05-plethoric.svg);
+    }
+
+    &[data-emotional-status="6"] {
+      background-image: url(assets/emotional-status/06-down.svg);
     }
 
   }
