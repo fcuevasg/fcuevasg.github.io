@@ -1,5 +1,8 @@
 .teams-screen {
   .teams-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
     margin-top: 1rem;
     .teams-list-item {
       position: relative;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { User, Team } from "../../components/interfaces/Interfaces"
+import { User, Team, MongoObjectId } from "../../components/interfaces/Interfaces"
 import axios from "axios"
 import { getThemeFromLocalStorage } from "../../utils/index"
 import "./SelectTeam.scss"
@@ -27,12 +27,16 @@ const SelectTeam: React.FC<Props> = () => {
     console.log('teams: ', teams)
   }, [teams])
 
+  const selectTeam = (team: MongoObjectId): void => {
+    console.log('click team: ', team)
+  }
+
   return (
     <div className="teams-screen">
       <h2>Selecciona tu equipo</h2>
       <div className="teams-list">
         {teams.map((team, index) => (
-          <button className="teams-list-item" key={index}>
+          <button onClick={() => selectTeam(team._id as MongoObjectId)} className="teams-list-item" key={index}>
             {team.name}
           </button>
         ))}
