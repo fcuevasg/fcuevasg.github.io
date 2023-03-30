@@ -19,16 +19,16 @@ interface teamListProps {
 
 export const TeamList = (props: teamListProps): React.ReactElement => {
   const { members, setMembers } = props;
-  
+
   let listItemClasses = "";
   let totalDailyTime = 0;
 
   const today: number = parseInt(getFormattedDate(new Date()));
-  
+
   const warnTime = 120;
   const alertTime = 180;
   const closeToEndTime = 300;
-  
+
   useEffect(() => {
     console.log(`members`, members);
     localStorage.removeItem("scrumtools-members");
@@ -44,7 +44,7 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
 
     if (!members[index].dailyData[today]) {
       members[index].dailyData = {
-        [today]: {status: 0, time: 0}
+        [today]: { status: 0, time: 0 }
       };
     }
 
@@ -60,12 +60,12 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
     return totalDailyTime > alertTime * members.length
       ? "overTime"
       : totalDailyTime > alertTime * members.length - closeToEndTime
-      ? "closeToEnd"
-      : totalDailyTime > 0
-      ? "inTime"
-      : "";
+        ? "closeToEnd"
+        : totalDailyTime > 0
+          ? "inTime"
+          : "";
   };
-  
+
   const getMemberTimeClass = (member: TeamMember) => {
 
     if (!member.dailyData[today] || member.dailyData[today].time === 0)
@@ -102,7 +102,7 @@ export const TeamList = (props: teamListProps): React.ReactElement => {
 
             if (!member.dailyData)
               member.dailyData = {
-                [today]: {status: 0, time: 0}
+                [today]: { status: 0, time: 0 }
               };
 
             if (member.dailyData[today] && member.dailyData[today].time)
