@@ -28,15 +28,18 @@ export interface TeamMember {
   }
 }
 
+export interface MongoObjectId {
+  $oid: string
+}
+
 export interface User {
-  _id?: {
-    $oid: string
-  },
+  _id?: MongoObjectId,
   name: string,
   email: string,
 }
 
 export interface Team {
+  _id?: MongoObjectId,
   name: string,
   users: Array<User>
 }
