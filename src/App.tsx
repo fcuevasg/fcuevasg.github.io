@@ -7,6 +7,8 @@ import { GridLayoutResizable } from "./components/gridLayout";
 import themeIcon from "./assets/theme-icon.svg";
 import { TeamMember } from "./components/interfaces/Interfaces";
 import { getFormattedDate } from "./Helpers";
+import SelectTeam from "./screens/SelectTeam/SelectTeam"
+import { getThemeFromLocalStorage } from "./utils/index"
 
 function App() {
   const [speakingIndex, setSpeakingIndex] = useState(
@@ -38,7 +40,7 @@ function App() {
       const newMemberData: TeamMember = {
         name: newMember,
         dailyData: {
-          [today] : {time: 0, status: 0}
+          [today]: { time: 0, status: 0 }
         }
       };
 
@@ -60,8 +62,11 @@ function App() {
     if (event.code === "NumpadEnter" || event.code === "Enter") addMember();
   };
 
+
   return (
     <div className={"App " + theme}>
+      <SelectTeam />
+      {/*
       <div className="themeSwitcher" onClick={toggleTheme}>
         <img src={themeIcon} alt="Change theme" />
       </div>
@@ -101,14 +106,6 @@ function App() {
           ></TeamList>
         ) : (
           <div>
-            {/* <div className="generate-members">
-              <button
-                className="generate-members__button"
-                onClick={generatePandoraMembers}
-              >
-                Generate Pandora members
-              </button>
-            </div> */}
             <li className="listItem inputMember">
               <div className="form-field__control">
                 <input
@@ -129,10 +126,12 @@ function App() {
               setMembers={setMembers}
             />
           </div>
-        )}
-      </div>
+        )
+        }
+      </div >
       <PrimeDirective content={pd} author="--Norm Kerth"></PrimeDirective>
-    </div>
+      */}
+    </div >
   );
 }
 
@@ -142,7 +141,7 @@ function generatePandoraMembers() {
 
   const today = parseInt(getFormattedDate(new Date()));
 
-  const pandoraMembers:TeamMember[] = [
+  const pandoraMembers: TeamMember[] = [
     {
       name: "Chao",
       dailyData: {}
@@ -195,10 +194,6 @@ function getMembersFromLocalStorage(): TeamMember[] {
   }
 
   return [];
-}
-
-function getThemeFromLocalStorage(): string {
-  return localStorage.getItem("scrumtools-theme") || "dark";
 }
 
 function getSpeakingFromLocalStorage(): string {
