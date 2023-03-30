@@ -1,0 +1,15 @@
+.teams-screen {
+  .teams-list {
+    margin-top: 1rem;
+    .teams-list-item {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0 0 0.25rem;
+      padding: 0.5rem 1rem;
+      border: 2px solid #eee;
+      transition: border 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+      color: white;
+    }
+  }
+}
