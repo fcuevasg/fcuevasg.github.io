@@ -1,5 +1,6 @@
 import React from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { SelectTeam, Meeting, AskMeetingType } from "../../screens"
 
 const router = createBrowserRouter([
   {
@@ -8,12 +9,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/teams",
-    element: <p>Select teams</p>
+    element: <SelectTeam />
   },
   {
     path: "/meeting",
-    element: <p>start meeting</p>
+    element: <Meeting />
   },
+  {
+    path: "/meeting_type/:team_id",
+    element: <AskMeetingType />
+  }
 ])
 
 const Router: React.FC<{}> = () => {

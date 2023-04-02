@@ -9,8 +9,11 @@ import { TeamMember } from "./components/interfaces/Interfaces";
 import { getFormattedDate } from "./Helpers";
 import SelectTeam from "./screens/SelectTeam/SelectTeam"
 import { getThemeFromLocalStorage } from "./utils/index"
+import Router from "./components/router/Router"
 
 function App() {
+  return <Router />
+
   const [speakingIndex, setSpeakingIndex] = useState(
     +getSpeakingFromLocalStorage()
   );

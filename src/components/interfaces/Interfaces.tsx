@@ -43,3 +43,5 @@ export interface Team {
   name: string,
   users: Array<User>
 }
+
+export type MeetingType = "RETRO" | "DAILY"

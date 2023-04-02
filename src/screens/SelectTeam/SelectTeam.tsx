@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { User, Team, MongoObjectId } from "../../components/interfaces/Interfaces"
+import { useNavigate } from "react-router-dom"
+import { Team, MongoObjectId } from "../../components/interfaces/Interfaces"
 import axios from "axios"
 import { getThemeFromLocalStorage } from "../../utils/index"
 import "./SelectTeam.scss"
@@ -11,6 +12,8 @@ interface Props {
 const SelectTeam: React.FC<Props> = () => {
   const [teams, setTeams] = useState<Team[]>([])
   const [theme, setTheme] = useState(getThemeFromLocalStorage());
+
+  const navigate = useNavigate()
 
   // This useEffect gets the teams from the backend when the components renders for the first time 
   useEffect(() => {
@@ -28,13 +31,13 @@ const SelectTeam: React.FC<Props> = () => {
   }, [teams])
 
   const selectTeam = (team: MongoObjectId): void => {
-    console.log('click team: ', team)
+    navigate(`/meeting_type/${team.$oid}`)
   }
 
   return (
-    <div className="teams-screen">
+    <div>
       <h2>Selecciona tu equipo</h2>
-      <div className="teams-list">
+      <div>
         {teams.map((team, index) => (
           <button onClick={() => selectTeam(team._id as MongoObjectId)} className="teams-list-item" key={index}>
             {team.name}
