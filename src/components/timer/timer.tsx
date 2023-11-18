@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./timer.scss";
 import playIcon from "./assets/play.svg";
@@ -100,13 +100,16 @@ export const Timer = (props: timerProps) => {
     return timeClass;
   };
 
-  setInterval(() => {
-    const currentTime = new Date();
-
-    if (currentTime.getSeconds() === 0) {
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
       SetCurrentTime(new Date());
-    }
-  }, 1000);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <div className="stopWatch-container">
