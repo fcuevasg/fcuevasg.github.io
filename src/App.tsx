@@ -83,6 +83,7 @@ function App() {
 				{!isEditMode ? (
 					<TeamList members={members} setMembers={setMembers} speakingIndex={speakingIndex} setSpeakingIndex={setSpeakingIndex}></TeamList>
 				) : (
+          
 					<div>
 						{/* <div className="generate-members">
               <button
